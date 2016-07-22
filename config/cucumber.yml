@@ -1,0 +1,7 @@
+
+default: -r support -r step_definitions
+##default:  --profile pom
+##pom: -r support -r features/step_definitions features --profile common_formatters --format rerun --out log/rerun.txt
+
+##common_formatters: >
+ ##--format html --out log/cucumber.html

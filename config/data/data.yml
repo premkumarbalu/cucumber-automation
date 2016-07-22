@@ -1,0 +1,54 @@
+
+driver_portal_login_details:
+ user_name: 'ownerlogin@example.com'
+ password: 'Modus-123'
+
+driver_portal_invalid_login_details:
+ user_name: 'ownerlogin123@example.com'
+ password: 'Modus-12345'
+
+
+management_site_credentials:
+ username: 'super_admin@example.com'
+ pword: '1qaz@WSX'
+
+
+create_new_order:
+  txt_email_id: ~"test#{Time.now.to_i/2}@gmail.com"
+  txt_first_name: 'Modus'
+  txt_last_name: 'Testing'
+  txt_phone: '7145555555'
+
+  txt_street: '2134 main st'
+  txt_suite: 'testing'
+  txt_city: 'Huntington Beach'
+  txt_state: 'CA'
+  txt_zip_code: '92648'
+
+  txt_make: 'Ford'
+  txt_model: 'Focus'
+  txt_year: '2012'
+  txt_driver_name: 'Testing'
+  txt_driver_email: ~"driver_email_id_test#{Time.now.to_i/2}@gmail.com"
+  txt_device_kind: 'Your SmartPhone'
+  txt_meid: 'FAKEV1N4412705822'
+
+create_dispatch_user:
+   txt_first_name: 'Modus'
+   txt_last_name: 'Testing'
+   txt_email: ~"dispatch_test#{Time.now.to_i/2}@gmail.com"
+   txt_pwd: 'Password1234'
+   txt_pwd_confi: 'Password1234'
+
+edit_vehicle_informations:
+    vehicle_make: 'Chevrolet'
+    vehicle_model: 'Spark'
+    vehicle_year: '2010'
+    miles: '100000'
+    battery_threshold: '11'
+    engine_threshold: '120'
+    fuel_type: 'Gasoline'
+    fuel_tank_size: '5'
+    fuel_economy: '4'
+    exp_month: 'March'
+    exp_year: '2020'
