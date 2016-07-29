@@ -60,7 +60,7 @@ When(/^I select "(.*?)" in All fields dropdown box$/) do |field_value|
   on(SearchPage).drdown_fieldName_element.select (field_value)
 end
 
-When(/^I click Search button$/) do
+When(/^I click search button$/) do
   on(SearchPage).btn_search_element.click
 end
 
@@ -128,4 +128,46 @@ end
 Then(/^I should see error message as "(.*?)"$/) do |txt_invalid_msg|
   txt_value = on(SearchPage).txt_searchResultsMsg_element.span_element.text
   txt_invalid_msg.upcase.eql?(txt_value.upcase).should be_true, "Search result message hasn't displayed"
+end
+
+When(/^I select tital of bib record randomly$/) do
+ on(SearchPage).lnk_title_of_bib_element.click
+end
+
+Then(/^I should navigate bib record detail page$/) do
+  sleep 5
+  on(SearchPage).tbl_bib_detail_page_element.visible?.should be_false, "Bib detail page hasn't displayed"
+end
+
+Then(/^I should see cocunt of the bib records$/) do
+  @value =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+end
+
+When(/^I select each institution records count$/) do
+on(SearchPage).chck_NYPL_element.click
+on(SearchPage).chck_CUL_element.click
+on(SearchPage).chck_PUL_element.click
+
+sleep 3
+on(SearchPage).chck_NYPL_element.click
+on(SearchPage).btn_search_element.click
+ value_1 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+
+on(SearchPage).chck_NYPL_element.click
+on(SearchPage).chck_CUL_element.click
+on(SearchPage).btn_search_element.click
+value_2 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+
+
+on(SearchPage).chck_CUL_element.click
+on(SearchPage).chck_PUL_element.click
+on(SearchPage).btn_search_element.click
+value_3 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+
+  @values = value_1.to_i + value_2.to_i + value_3.to_i
+end
+
+
+Then(/^I should match with total count of bib records$/) do
+  @value.to_i.eql?(@values).should be_true, "Bib total records count is mismatch"
 end
