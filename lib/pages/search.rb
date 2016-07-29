@@ -20,7 +20,13 @@ include PageObject
     #Search Result
     button           :btn_request,                                    :id =>'request'
     button           :btn_export,                                     :id => 'export'
-    div              :txt_searchResultsMsg,                            :id => 'searchResultsMsgId'
+    div              :txt_searchResultsMsg,                           :id => 'searchResultsMsgId'
+    link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitle-2'
+    div              :tbl_bib_detail_page,                            :id => 'marcRecordViewDivId'
+    div             :txt_total_value,                                :id => 'searchResultsHeadId'
+    checkbox         :chck_NYPL,                                      :id => 'owningInstitutionNYPL'
+    checkbox         :chck_CUL,                                       :id => 'owningInstitutionCUL'
+    checkbox         :chck_PUL,                                       :id => 'owningInstitutionPUL'
 #-------------------------------------------------------------------------------------
     text_field       :password,                             :xpath => "//input[@type='password']"
     button           :continue,                             :class => 'box-submit'
