@@ -64,7 +64,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Assad, R." in search box
        And I select "Author" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -73,7 +73,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Symphonies, Symphony no. 1 in F major, 1902-03" in search box
        And I select "Title" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -82,7 +82,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Symphonies" in search box
        And I select "Title Starts with" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -91,7 +91,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Pergamon," in search box
        And I select "Publisher" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -100,7 +100,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Washington" in search box
        And I select "Publication Place" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -109,7 +109,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "1982" in search box
        And I select "Publication Date" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -118,7 +118,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Television broadcasting United States Periodicals." in search box
        And I select "Subject" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -127,7 +127,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "2876450259" in search box
        And I select "ISBN" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -136,7 +136,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "0197-8624" in search box
        And I select "ISSN" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -145,7 +145,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "502445795" in search box
        And I select "OCLC Number" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -154,7 +154,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Editor: W.C. Hansen, 1964-1979." in search box
        And I select "Notes" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -163,7 +163,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "DS135.R92" in search box
        And I select "Call Number" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -172,7 +172,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "32101044735031" in search box
        And I select "Barcode" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
 
    @automation
@@ -181,7 +181,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I enter "Meeks, Dimitri." in search box
        And I select "Author" in All fields dropdown box
-       And I click Search button
+       And I click search button
       Then I should see the search results
        And I should see the following buttons:
 
@@ -228,3 +228,22 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I login with valid credential
        And I search with invalid keyword in search box
       Then I should see error message as "No search results found. Please refine search results."
+
+   @automation
+   Scenario: As a librarian, I can view bib record detail page
+     Given I launch the SCSB application
+      When I login with valid credential
+       And I click search button
+      Then I should see the search results
+      When I select tital of bib record randomly
+      Then I should navigate bib record detail page
+
+   @automation
+   Scenario: As a librarian, I can verify total of the bib records in search results
+     Given I launch the SCSB application
+      When I login with valid credential
+       And I click search button
+      Then I should see cocunt of the bib records
+      When I select each institution records count
+      Then I should match with total count of bib records
+
