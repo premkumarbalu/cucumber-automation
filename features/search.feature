@@ -4,14 +4,14 @@
 # Scenario Count :22
 # Notes
 
- Feature: Search page
+Feature: Search page
 
 
- @automation
- Scenario: As a librarian,I can view search page 
-   Given I launch the SCSB application
-    When I login with valid credentails
-    Then I should see search page with following elements:
+   @automation
+   Scenario: As a librarian,I can view search page
+     Given I launch the SCSB application
+      When I login with valid credentails
+      Then I should see search page with following elements:
 
     |elements					   |
     |search box                    |
@@ -23,46 +23,46 @@
     |Search button                 |
     |clear button                  |
     |New Search button             |
- 
- @automation
- Scenario: As a librarian, I can see checkobox filters are checked by defaultly in search page
-   Given I launch the SCSB application
-    When I login with valid credential
-    Then I should see the following checkbox filters are checked by defaultly:
 
-    |filters                       |
-    |Owning instituation checkboxes|
-    |Colloction group checkboxs    |
-    |Avaliability checkbox         |
-    |material type checkboxs       |
+   @automation
+   Scenario: As a librarian, I can see checkobox filters are checked by defaultly in search page
+     Given I launch the SCSB application
+      When I login with valid credential
+      Then I should see the following checkbox filters are checked by defaultly:
 
-@automation
-Scenario: As a librarian, I can see "All fields" details in search page
-  Given I launch the SCSB application
-   When I login with valid credential
-    And I select All fields drop down
-   Then I could see the following elements in all fields dropdown box:
+     |filters                       |
+     |Owning instituation checkboxes|
+     |Colloction group checkboxs    |
+     |Avaliability checkbox         |
+     |material type checkboxs       |
 
-   |All fields       |
-   |Author           |
-   |Title            | 
-   |Title Starts with|
-   |Publisher        |
-   |Publication Place| 
-   |Publication Date |
-   |Subject          |
-   |ISBN             |
-   |ISSN             |
-   |OCLC Number      |
-   |Notes            |
-   |Call Number      |
-   |Barcode          |
+   @automation
+   Scenario: As a librarian, I can see "All fields" details in search page
+     Given I launch the SCSB application
+      When I login with valid credential
+       And I select All fields drop down
+      Then I could see the following elements in all fields dropdown box:
+
+      |All fields       |
+      |Author           |
+      |Title            |
+      |Title Starts with|
+      |Publisher        |
+      |Publication Place|
+      |Publication Date |
+      |Subject          |
+      |ISBN             |
+      |ISSN             |
+      |OCLC Number      |
+      |Notes            |
+      |Call Number      |
+      |Barcode          |
 
    @automation
    Scenario: As a librarian, I can search with "Author" name as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Assad, R." in search box
+       And I enter "Pawlak, Zofia" in search box
        And I select "Author" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -71,7 +71,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "Title" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Symphonies, Symphony no. 1 in F major, 1902-03" in search box
+       And I enter "Kanayama iseki 0, IV-ku." in search box
        And I select "Title" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -80,7 +80,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "Title start with" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Symphonies" in search box
+       And I enter "Kanayama" in search box
        And I select "Title Starts with" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -125,7 +125,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "ISBN" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "2876450259" in search box
+       And I enter "3885061171" in search box
        And I select "ISBN" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -143,7 +143,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "OCLC Number" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "502445795" in search box
+       And I enter "8988852" in search box
        And I select "OCLC Number" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -152,7 +152,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "Notes" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Editor: W.C. Hansen, 1964-1979." in search box
+       And I enter "Bibliography: p. 353-358" in search box
        And I select "Notes" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -161,7 +161,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "Call Number" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "DS135.R92" in search box
+       And I enter "MICROFILM 04251" in search box
        And I select "Call Number" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -170,7 +170,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with "Barcode" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "32101044735031" in search box
+       And I enter "32101053440838" in search box
        And I select "Barcode" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -179,15 +179,15 @@ Scenario: As a librarian, I can see "All fields" details in search page
    Scenario: As a librarian, I can search with valid keyword , application should display the search result with two buttons
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Meeks, Dimitri." in search box
+       And I enter "Pawlak, Zofia" in search box
        And I select "Author" in All fields dropdown box
        And I click search button
       Then I should see the search results
        And I should see the following buttons:
 
-       |Button                  |
-       |Request Selected Records|
-       |Export Selected Records |
+      |Button                  |
+      |Request Selected Records|
+      |Export Selected Records |
 
    @automation
    Scenario: As a librarian, I can clear content in the text field and checkboxes
@@ -222,7 +222,7 @@ Scenario: As a librarian, I can see "All fields" details in search page
       When I select "Export Selected Records"
       Then The selected records are exported as a CSV file in the same format as the grid
 
-   @automation
+  @automation
    Scenario: As a librarian, I search with invalid keyword or junk keyword
      Given I launch the SCSB application
       When I login with valid credential
