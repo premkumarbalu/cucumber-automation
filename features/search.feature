@@ -71,7 +71,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Title" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Kanayama iseki 0, IV-ku." in search box
+       And I enter "Das Geheimnis der Roten Kapelle :" in search box
        And I select "Title" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -80,7 +80,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Title start with" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Kanayama" in search box
+       And I enter "Das Geheimnis" in search box
        And I select "Title Starts with" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -247,3 +247,20 @@ Feature: Search page
       When I select each institution records count
       Then I should match with total count of bib records
 
+   @manual
+   Scenario: As a librarian, I can verify title sorting functionality
+     Given I launch the SCSB application
+      When I login with valid credential
+       And I click search button
+      Then I should see the search results
+      When I click title sorting arrow
+      Then I should see title sorted based on the alphabets
+
+   @automation
+   Scenario: As a librarian, I can verify author sorting functionality
+     Given I launch the SCSB application
+      When I login with valid credential
+       And I click search button
+      Then I should see the search results
+      When I click author sorting arrow
+      Then I should see author sorted based on the alphabets
