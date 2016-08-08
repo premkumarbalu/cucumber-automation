@@ -6,7 +6,6 @@
 
 Feature: Search page
 
-
    @automation
    Scenario: As a librarian,I can view search page
      Given I launch the SCSB application
@@ -25,7 +24,7 @@ Feature: Search page
     |New Search button             |
 
    @automation
-   Scenario: As a librarian, I can see checkobox filters are checked by defaultly in search page
+   Scenario: As a librarian, I can see checkbox filters are checked by defaultly in search page
      Given I launch the SCSB application
       When I login with valid credential
       Then I should see the following checkbox filters are checked by defaultly:
