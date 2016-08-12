@@ -4,6 +4,7 @@
 # Scenario Count :22
 # Notes
 
+
 Feature: Search page
 
    @automation
