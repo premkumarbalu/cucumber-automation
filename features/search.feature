@@ -4,8 +4,8 @@
 # Scenario Count :22
 # Notes
 
-Feature: Search page
 
+Feature: Search page
 
    @automation
    Scenario: As a librarian,I can view search page
@@ -25,7 +25,7 @@ Feature: Search page
     |New Search button             |
 
    @automation
-   Scenario: As a librarian, I can see checkobox filters are checked by defaultly in search page
+   Scenario: As a librarian, I can see checkbox filters are checked by defaultly in search page
      Given I launch the SCSB application
       When I login with valid credential
       Then I should see the following checkbox filters are checked by defaultly:
@@ -62,7 +62,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Author" name as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Pawlak, Zofia" in search box
+       And I enter "Smeaton, John" in search box
        And I select "Author" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -71,7 +71,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Title" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Das Geheimnis der Roten Kapelle :" in search box
+       And I enter "Geological strain analysis" in search box
        And I select "Title" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -116,7 +116,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Subject" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Television broadcasting United States Periodicals." in search box
+       And I enter "Bookbinding. Bookbinding New York (State) New York" in search box
        And I select "Subject" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -125,7 +125,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "ISBN" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "3885061171" in search box
+       And I enter "8471540614" in search box
        And I select "ISBN" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -143,7 +143,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "OCLC Number" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "8988852" in search box
+       And I enter "8553096" in search box
        And I select "OCLC Number" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -161,7 +161,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Call Number" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "MICROFILM 04251" in search box
+       And I enter "PQ7390.B36 U53 1981" in search box
        And I select "Call Number" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -170,7 +170,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with "Barcode" as a keyword in the search box
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "32101053440838" in search box
+       And I enter "32101082031798" in search box
        And I select "Barcode" in All fields dropdown box
        And I click search button
       Then I should see the search results
@@ -179,7 +179,7 @@ Feature: Search page
    Scenario: As a librarian, I can search with valid keyword , application should display the search result with two buttons
      Given I launch the SCSB application
       When I login with valid credential
-       And I enter "Pawlak, Zofia" in search box
+       And I enter "Juvancz, Ireneusz." in search box
        And I select "Author" in All fields dropdown box
        And I click search button
       Then I should see the search results
