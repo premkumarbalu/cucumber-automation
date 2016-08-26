@@ -1,0 +1,2 @@
+# Logfile created on 2016-07-25 15:20:30 +0530 by logger.rb/v1.2.7
+D, [2016-07-25T15:20:30.726000 #27168] DEBUG -- : Scenario: As a librarian, I can search with "Publication Date" as a keyword in the search box

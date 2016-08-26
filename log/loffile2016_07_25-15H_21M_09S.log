@@ -1,0 +1,2 @@
+# Logfile created on 2016-07-25 15:21:09 +0530 by logger.rb/v1.2.7
+D, [2016-07-25T15:21:09.694000 #27168] DEBUG -- : Scenario: As a librarian, I can search with "OCLC Number" as a keyword in the search box
