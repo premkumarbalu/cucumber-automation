@@ -1,0 +1,2 @@
+# Logfile created on 2016-07-27 12:13:09 +0530 by logger.rb/v1.2.7
+D, [2016-07-27T12:13:09.584000 #24535] DEBUG -- : Scenario: As a librarian, I can search with "ISSN" as a keyword in the search box

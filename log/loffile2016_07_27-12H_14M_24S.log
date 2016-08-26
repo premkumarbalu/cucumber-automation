@@ -1,0 +1,2 @@
+# Logfile created on 2016-07-27 12:14:24 +0530 by logger.rb/v1.2.7
+D, [2016-07-27T12:14:24.638000 #24535] DEBUG -- : Scenario: As a librarian, I search with invalid keyword or junk keyword

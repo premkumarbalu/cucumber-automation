@@ -1,0 +1,2 @@
+# Logfile created on 2016-07-26 14:24:47 +0530 by logger.rb/v1.2.7
+D, [2016-07-26T14:24:47.697000 #8485] DEBUG -- : Scenario: As a librarian, I can see checkobox filters are checked by defaultly in search page

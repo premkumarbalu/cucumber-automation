@@ -1,0 +1,2 @@
+# Logfile created on 2016-07-25 15:38:55 +0530 by logger.rb/v1.2.7
+D, [2016-07-25T15:38:55.981000 #871] DEBUG -- : Scenario: As a librarian, I can search with "Title start with" as a keyword in the search box

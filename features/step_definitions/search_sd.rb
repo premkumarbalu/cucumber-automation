@@ -8,28 +8,28 @@ end
 
 Then(/^I should see search page with following elements:$/) do |table|
 
-    table.rows.each do |element|
-      case element.first
-        when 'search box'
-          on(SearchPage).txt_search_box_element.visible?.should be_true, "Search box not displayed on search page"
-        when 'Owning instituation checkboxes'
-          on(SearchPage).checkbox_ownInstId_element.visible?.should be_true, "Owning Institution checkboxes haven't displayed on search page"
-        when 'Colloction group checkboxs'
-          on(SearchPage).checkbox_cgdId_element.visible?.should be_true, "Colloction group checkboxs haven't displayed on search page"
-        when 'Avaliability checkbox'
-          on(SearchPage).checkbox_availabilityId_element.visible?.should be_true, "Avaliability checkboxes haven't displayed on search page"
-        when 'material type checkboxs'
-          on(SearchPage).checkbox_materialTypeId_element.visible?.should be_true, "material type checkboxs haven't displayed on search page"
-        when 'All fields dropdown'
-          on(SearchPage).drdown_fieldName_element.visible?.should be_true, "All field hasn't displayed on search page"
-        when 'Search button'
-          on(SearchPage).btn_search_element.visible?.should be_true, "Search button hasn't displayed on search page"
-        when 'clear button'
-          on(SearchPage).btn_clear_element.visible?.should be_true, "Clear button hasn't displayed on search page"
-        when 'New Search button'
-          on(SearchPage).btn_newSearch_element.visible?.should be_true, "New Search button hasn't displayed on search page"
-      end
+  table.rows.each do |element|
+    case element.first
+      when 'search box'
+        on(SearchPage).txt_search_box_element.visible?.should be_true, "Search box not displayed on search page"
+      when 'Owning instituation checkboxes'
+        on(SearchPage).checkbox_ownInstId_element.visible?.should be_true, "Owning Institution checkboxes haven't displayed on search page"
+      when 'Colloction group checkboxs'
+        on(SearchPage).checkbox_cgdId_element.visible?.should be_true, "Colloction group checkboxs haven't displayed on search page"
+      when 'Avaliability checkbox'
+        on(SearchPage).checkbox_availabilityId_element.visible?.should be_true, "Avaliability checkboxes haven't displayed on search page"
+      when 'material type checkboxs'
+        on(SearchPage).checkbox_materialTypeId_element.visible?.should be_true, "material type checkboxs haven't displayed on search page"
+      when 'All fields dropdown'
+        on(SearchPage).drdown_fieldName_element.visible?.should be_true, "All field hasn't displayed on search page"
+      when 'Search button'
+        on(SearchPage).btn_search_element.visible?.should be_true, "Search button hasn't displayed on search page"
+      when 'clear button'
+        on(SearchPage).btn_clear_element.visible?.should be_true, "Clear button hasn't displayed on search page"
+      when 'New Search button'
+        on(SearchPage).btn_newSearch_element.visible?.should be_true, "New Search button hasn't displayed on search page"
     end
+  end
 end
 
 When(/^I login with valid credential$/) do
@@ -53,7 +53,7 @@ Then(/^I could see the following elements in all fields dropdown box:$/) do |tab
 end
 
 When(/^I enter "(.*?)" in search box$/) do |txt_value|
-    on(SearchPage).txt_search_box_element.value = txt_value
+  on(SearchPage).txt_search_box_element.value = txt_value
 end
 
 When(/^I select "(.*?)" in All fields dropdown box$/) do |field_value|
@@ -69,15 +69,15 @@ Then(/^I should see the search results$/) do
 end
 
 Then(/^I should see the following buttons:$/) do |table|
-   table.rows.each do |element|
-     case element.first
-       when 'Request Selected Records'
-         on(SearchPage).btn_request_element.visible?.should be_true, "Request button is not visible in search result page"
-       when'Export Selected Records '
-         on(SearchPage).btn_export_element.visible?.should be_true, "Export button is not visible in search result page"
-     end
+  table.rows.each do |element|
+    case element.first
+      when 'Request Selected Records'
+        on(SearchPage).btn_request_element.visible?.should be_true, "Request button is not visible in search result page"
+      when'Export Selected Records '
+        on(SearchPage).btn_export_element.visible?.should be_true, "Export button is not visible in search result page"
+    end
 
-   end
+  end
 end
 
 When(/^I click clear button$/) do
@@ -131,7 +131,7 @@ Then(/^I should see error message as "(.*?)"$/) do |txt_invalid_msg|
 end
 
 When(/^I select tital of bib record randomly$/) do
- on(SearchPage).lnk_title_of_bib_element.click
+  on(SearchPage).lnk_title_of_bib_element.click
 end
 
 Then(/^I should navigate bib record detail page$/) do
@@ -144,25 +144,25 @@ Then(/^I should see cocunt of the bib records$/) do
 end
 
 When(/^I select each institution records count$/) do
-on(SearchPage).chck_NYPL_element.click
-on(SearchPage).chck_CUL_element.click
-on(SearchPage).chck_PUL_element.click
+  on(SearchPage).chck_NYPL_element.click
+  on(SearchPage).chck_CUL_element.click
+  on(SearchPage).chck_PUL_element.click
 
-sleep 3
-on(SearchPage).chck_NYPL_element.click
-on(SearchPage).btn_search_element.click
- value_1 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+  sleep 3
+  on(SearchPage).chck_NYPL_element.click
+  on(SearchPage).btn_search_element.click
+  value_1 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
 
-on(SearchPage).chck_NYPL_element.click
-on(SearchPage).chck_CUL_element.click
-on(SearchPage).btn_search_element.click
-value_2 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+  on(SearchPage).chck_NYPL_element.click
+  on(SearchPage).chck_CUL_element.click
+  on(SearchPage).btn_search_element.click
+  value_2 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
 
 
-on(SearchPage).chck_CUL_element.click
-on(SearchPage).chck_PUL_element.click
-on(SearchPage).btn_search_element.click
-value_3 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+  on(SearchPage).chck_CUL_element.click
+  on(SearchPage).chck_PUL_element.click
+  on(SearchPage).btn_search_element.click
+  value_3 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
 
   @values = value_1.to_i + value_2.to_i + value_3.to_i
 end
