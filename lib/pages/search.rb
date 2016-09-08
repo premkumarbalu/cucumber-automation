@@ -5,8 +5,9 @@ class SearchPage
 
   #page_url"http://dev-recap.htcinc.com:9090/search"
 
-  page_url "http://tst-recap.htcinc.com:9090/search"
+  #page_url "http://tst-recap.htcinc.com:9090/search"
 
+  page_url "http://54.209.62.22:9090/search"
   #Search page
   text_field       :txt_search_box,                                 :id => 'fieldValue'
   div              :checkbox_ownInstId,                             :id => 'ownInstId'
@@ -25,7 +26,7 @@ class SearchPage
   div              :txt_searchResultsMsg,                           :id => 'searchResultsMsgId'
   link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitle-2'
   div              :tbl_bib_detail_page,                            :id => 'marcRecordViewDivId'
-  div             :txt_total_value,                                :id => 'searchResultsHeadId'
+  div              :txt_total_value,                                :xpath => ".//*[@id='searchRecordsDivId']/div[3]/div[3]/span/span"
   checkbox         :chck_NYPL,                                      :id => 'owningInstitutionNYPL'
   checkbox         :chck_CUL,                                       :id => 'owningInstitutionCUL'
   checkbox         :chck_PUL,                                       :id => 'owningInstitutionPUL'

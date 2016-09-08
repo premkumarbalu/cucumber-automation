@@ -140,7 +140,8 @@ Then(/^I should navigate bib record detail page$/) do
 end
 
 Then(/^I should see cocunt of the bib records$/) do
-  @value =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+    @value =  on(SearchPage).txt_total_value_element.text
+    @value = @value.gsub(",","")
 end
 
 When(/^I select each institution records count$/) do
@@ -151,20 +152,24 @@ When(/^I select each institution records count$/) do
   sleep 3
   on(SearchPage).chck_NYPL_element.click
   on(SearchPage).btn_search_element.click
-  value_1 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+  value_1 =  on(SearchPage).txt_total_value_element.text
+  value_1 = value_1.gsub(",","")
 
   on(SearchPage).chck_NYPL_element.click
   on(SearchPage).chck_CUL_element.click
   on(SearchPage).btn_search_element.click
-  value_2 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+  value_2 =  on(SearchPage).txt_total_value_element.text
+  value_2 = value_2.gsub(",","")
 
 
   on(SearchPage).chck_CUL_element.click
   on(SearchPage).chck_PUL_element.click
   on(SearchPage).btn_search_element.click
-  value_3 =  on(SearchPage).txt_total_value_element.span_element.span_element.text
+  value_3 =  on(SearchPage).txt_total_value_element.text
+  value_3 = value_3.gsub(",","")
 
   @values = value_1.to_i + value_2.to_i + value_3.to_i
+
 end
 
 

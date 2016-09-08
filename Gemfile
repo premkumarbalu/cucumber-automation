@@ -4,6 +4,15 @@ source 'https://rubygems.org'
 # will contain all gems that are the same and used in all projects
 # Projects themselves should have a Gemfile in their respective support/project_name folder and immediately after the source line include: instance_eval File.read(File.dirname(__FILE__) + '/../common/Gemfile')
 
+gem "cucumber", "1.3.1"
+gem "rspec", "2.12.0"
+gem 'page-object'
+gem 'ruby-debug'
+gem "require_all", "1.2.1"
+gem "xpath", "0.1.4"
+gem "yml_reader", "0.2"
+
+=begin
 gem 'selenium-webdriver', '~> 2.46'
 gem "gherkin", "2.12.0"
 gem "cucumber", "1.3.1"
@@ -95,3 +104,4 @@ gem 'geokit'
 gem 'memoist'
 gem 'roodi', '4.0.0'
 
+=end
