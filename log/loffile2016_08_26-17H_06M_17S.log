@@ -1,2 +1,0 @@
-# Logfile created on 2016-08-26 17:06:17 +0530 by logger.rb/v1.2.7
-D, [2016-08-26T17:06:17.884000 #29525] DEBUG -- : Scenario: As a librarian, I can search with valid keyword , application should display the search result with two buttons
