@@ -11,7 +11,6 @@ source 'https://rubygems.org'
 #gem "require_all", "1.2.1"
 #gem "xpath", "0.1.4"
 #gem "yml_reader", "0.2"
-
 gem "childprocess" , "0.5.1"
 gem "columnize",  "0.9.0"
 gem "gherkin", "2.12.0"
@@ -29,6 +28,7 @@ gem "page_navigation", "0.9"
 gem "require_all", "1.2.1"
 gem "rspec", "2.12.0"
 gem "rspec-core", "2.12.2"
+
 gem "rspec-expectations", "2.12.1"
 gem "rspec-mocks", "2.12.2"
 gem "ruby-debug", "0.10.6"
@@ -38,7 +38,6 @@ gem "selenium-webdriver", "2.53.3"
 gem "watir-webdriver", "0.9.1"
 gem "websocket", "1.0.7"
 gem "xpath", "0.1.4"
-
 
 =begin
 gem 'selenium-webdriver', '~> 2.46'
