@@ -11,6 +11,7 @@ require 'rspec'
 #require 'rspec/expectations'
 require 'java'
 require 'watir-webdriver'
+require 'headless'
 ##require '../lib/jarfiles/db2driver-9.5.jar'
 
 #require 'data_magic'
