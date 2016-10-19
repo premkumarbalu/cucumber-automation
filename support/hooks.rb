@@ -20,5 +20,5 @@ After do |scenario|
     ##@browser.save_screenshot(path)
   end
   @browser.quit
-  headless.destroy
+  #headless.destroy
 end

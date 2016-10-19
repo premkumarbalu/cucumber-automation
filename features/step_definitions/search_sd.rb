@@ -12,9 +12,9 @@ Then(/^I should see search page with following elements:$/) do |table|
     case element.first
       when 'search box'
         on(SearchPage).txt_search_box_element.visible?.should be_true, "Search box not displayed on search page"
-      when 'Owning instituation checkboxes'
+      when 'Owning institution checkboxes'
         on(SearchPage).checkbox_ownInstId_element.visible?.should be_true, "Owning Institution checkboxes haven't displayed on search page"
-      when 'Colloction group checkboxs'
+      when 'Collections group checkboxs '
         on(SearchPage).checkbox_cgdId_element.visible?.should be_true, "Colloction group checkboxs haven't displayed on search page"
       when 'Avaliability checkbox'
         on(SearchPage).checkbox_availabilityId_element.visible?.should be_true, "Avaliability checkboxes haven't displayed on search page"

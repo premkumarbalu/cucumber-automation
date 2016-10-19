@@ -1,7 +1,7 @@
 # Author: HTC
 # Story: Search Result
 # Date Signed Off:
-# Scenario Count :34
+# Scenario Count :33
 # Notes
 
 
@@ -13,11 +13,11 @@ Feature: Search page
     When I login with valid credentails
     Then I should see search page with following elements:
 
-   |elements					   |
+   |elements					  |
    |search box                    |
-   |Owning instituation checkboxes|
-   |Colloction group checkboxs    |
-   |Avaliability checkbox         |
+   |Owning institution checkboxes |
+   |Collections group checkboxs   |
+   |Availability checkbox         |
    |material type checkboxs       |
    |All fields dropdown           |
    |Search button                 |
@@ -134,7 +134,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "ISSN" as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "0892782250" in search box
+     And I enter "18028705" in search box
      And I select "ISSN" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -338,7 +338,7 @@ Feature: Search page
     Then I should see the 25 search results
 
  @automation
- Scenario:As a librarian, I can see 25 Search Results
+ Scenario:As a librarian, I can see 50 Search Results
    Given I launch the SCSB application
     When I login with valid credential
      And I click search button
@@ -347,7 +347,7 @@ Feature: Search page
     Then I should see the 50 search results
 
  @automation
- Scenario:As a librarian, I can see 25 Search Results
+ Scenario:As a librarian, I can see 100 Search Results
    Given I launch the SCSB application
     When I login with valid credential
      And I click search button
