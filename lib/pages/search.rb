@@ -5,11 +5,10 @@ class SearchPage
   #page_url ENV['URL']
 
   #page_url"http://dev-recap.htcinc.com:9090/search"
-
   #page_url "http://tst-recap.htcinc.com:9090/search"
-
-  page_url "http://uat-recap.htcinc.com:9090/search"
+  page_url "http://tst-recap.htcinc.com:9090/search"
   #Search page
+
   text_field       :txt_search_box,                                 :id => 'fieldValue'
   div              :checkbox_ownInstId,                             :id => 'ownInstId'
   div              :checkbox_cgdId,                                 :id => 'cgdId'
@@ -24,6 +23,7 @@ class SearchPage
   div              :table_searchResultsDiv,                         :id => 'searchResultsDiv'
   image            :image_showFacetsIcon,                           :id => 'showFacetsIcon'
   image            :image_clearSearchText,                          :id => 'clearSearchText'
+  link             :tab_collection,                                 :xpath =>".//*[@id='searchTabs']/li[2]/a"
   #Searchpage--checkboxes----
   checkbox         :chck_owningInstitutionNYPL,                     :id => 'owningInstitutionNYPL'
   checkbox         :chck_owningInstitutionCUL,                      :id => 'owningInstitutionCUL'
@@ -66,14 +66,13 @@ class SearchPage
   text_field       :int_forgot_email,                     :class => 'form-control'
   div              :txt_alert_msg,                        :class => 'alert-success'
 
-  #ManagementPortal
-  text_field       :username,                            :id => 'username_id'
-  text_field       :pword,                               :id => "password_id"
-  button           :btn_sign_in,                         :class => 'signin-btn'
 
-  ##def initialize_page
-  #has_expected_element?
-  #end
+  def get_valid_barcode
+    btn_search
+    wait_until(30, ""){table_searchResultsDiv_element.visible?}
+    barcode = span_element(:id=>"searchResultsDataBarS-0").text
+    return barcode.to_i
+  end
 
   def login_driver_portal
     driver_valid_credentials = TestData.driver_portal_login_details
@@ -90,6 +89,18 @@ class SearchPage
     management_site_credential = TestData.management_site_credentials
     populate_page_with management_site_credential
     btn_sign_in_element.click
+  end
+
+  def switch_browser_title(txt_switch_window)
+        #create a array with window_id and its corresponding window page title
+        wnd_titl = @browser.window_handles.map do |w|
+          @browser.switch_to.window(w)
+          [w,@browser.title]
+        end
+        #required window
+        win_id = wnd_titl.find { |e1,e2| e2 == txt_switch_window }.first
+        @browser.switch_to.window(win_id) #switched to the required window
+        @browser.manage.window.maximize
   end
 
 end
