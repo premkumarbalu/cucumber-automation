@@ -5,25 +5,25 @@ class SearchPage
   #page_url ENV['URL']
 
   #page_url"http://dev-recap.htcinc.com:9090/search"
-  #page_url "http://tst-recap.htcinc.com:9090/search"
+  #page_url "http://uat-recap.htcinc.com:9090/search"
   page_url "http://tst-recap.htcinc.com:9090/search"
   #Search page
 
   text_field       :txt_search_box,                                 :id => 'fieldValue'
-  div              :checkbox_ownInstId,                             :id => 'ownInstId'
-  div              :checkbox_cgdId,                                 :id => 'cgdId'
-  div              :checkbox_availabilityId,                        :id => 'availabilityId'
-  div              :checkbox_materialTypeId,                        :id => 'materialTypeId'
+  div              :checkbox_ownInstId,                             :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div/div/div/div[2]/div[2]/div[2]/div/div[1]"
+  div              :checkbox_cgdId,                                 :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div/div/div/div[2]/div[3]/div[2]/div[1]"
+  div              :checkbox_availabilityId,                        :xpath => 'html/body/section/div/div/div/div/div/form/fieldset/div/div/div/div[2]/div[3]/div[2]/div[2]'
+  div              :checkbox_materialTypeId,                        :xpath => 'html/body/section/div/div/div/div/div/form/fieldset/div/div/div/div[2]/div[2]/div[2]/div/div[2]'
   select_list      :drdown_fieldName,                               :id => 'fieldName'
   button           :btn_search,                                     :id => 'search'
-  button           :btn_use_restriction,                            :id => 'useRestrictionId'
+  button           :btn_use_restriction,                            :xpath => 'html/body/section/div/div/div/div/div/form/fieldset/div/div/div/div[2]/div[3]/div[2]/div[3]'
   button           :btn_newSearch,                                  :id => 'newSearch'
-  button           :btn_nextbutton,                                 :xpath => ".//*[@id='paginationId']/ul/li[4]/a"
+  button           :btn_nextbutton,                                 :id => "nextBottom"
   button           :btn_lastBottom,                                 :id => 'lastBottom'
   div              :table_searchResultsDiv,                         :id => 'searchResultsDiv'
-  image            :image_showFacetsIcon,                           :id => 'showFacetsIcon'
+  span             :image_showFacetsIcon,                           :id => 'showFacets'
   image            :image_clearSearchText,                          :id => 'clearSearchText'
-  link             :tab_collection,                                 :xpath =>".//*[@id='searchTabs']/li[2]/a"
+  link             :tab_collection,                                 :class =>'tab-collection'
   #Searchpage--checkboxes----
   checkbox         :chck_owningInstitutionNYPL,                     :id => 'owningInstitutionNYPL'
   checkbox         :chck_owningInstitutionCUL,                      :id => 'owningInstitutionCUL'
@@ -41,23 +41,24 @@ class SearchPage
   checkbox         :chck_others,                                    :id => 'others'
 
   #Search Result
-  button           :btn_request,                                    :id =>'request'
+  button           :btn_request,                                    :xpath =>"html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div[3]/button[2]"
   button           :btn_export,                                     :id => 'export'
-  div              :txt_searchResultsMsg,                           :id => 'searchResultsMsgId'
+  div              :txt_searchResultsMsg,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div/div/span[2]"
   div              :txt_alert_alert_info,                           :class => 'alert-info'
-  link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitle-2'
+  link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitleS-2'
   div              :tbl_bib_detail_page,                            :id => 'marcRecordViewDivId'
-  div              :txt_total_value,                                :xpath => ".//*[@id='paginationDivTopId']/div[3]/span[1]/span"
+  div              :txt_total_value,                                :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div[1]/div[3]/span[1]/span"
   checkbox         :chck_NYPL,                                      :id => 'owningInstitutionNYPL'
   checkbox         :chck_CUL,                                       :id => 'owningInstitutionCUL'
   checkbox         :chck_PUL,                                       :id => 'owningInstitutionPUL'
   checkbox         :chck_selectAllFacets,                           :id => 'selectAllFacets'
-  select_list       :chck_numOfRecordsId,                           :id => 'numOfRecordsId'
+  select_list      :chck_numOfRecordsId,                            :id => 'numOfRecordsId'
   table            :tbl_searchResultsDataPlus24,                    :id => 'searchResultsDataPlus-24'
   table            :tbl_searchResultsDataPlus49,                    :id => 'searchResultsDataPlus-49'
   table            :tbl_searchResultsDataPlus99,                    :id => 'searchResultsDataPlus-99'
-  image            :image_showItemsIcon,                             :id => 'showItemsIcon-5'
-  table            :tbl_searchItemResultsRow5,                       :id => 'searchItemResultsRow-5'
+  image            :image_showItemsIcon,                            :id => 'showItemsIcon-5'
+  table            :tbl_searchItemResultsRow5,                      :id => 'searchItemResultsRow-5'
+  span             :btn_show_facts,                                 :id => 'showFacets'
 
   #-------------------------------------------------------------------------------------
   text_field       :password,                             :xpath => "//input[@type='password']"
@@ -71,7 +72,21 @@ class SearchPage
     btn_search
     wait_until(30, ""){table_searchResultsDiv_element.visible?}
     barcode = span_element(:id=>"searchResultsDataBarS-0").text
-    return barcode.to_i
+    if barcode == ""
+      barcode = span_element(:id=>"searchResultsDataBarS-1").text
+      if barcode ==""
+        barcode = span_element(:id=>"searchResultsDataBarS-2").text
+        if barcode == ""
+          barcode = span_element(:id=>"searchResultsDataBarS-3").text
+          if barcode ==""
+            image_element(:id=>'showItemsIcon-0').click
+            barcode = span_element(:id=>'searchItemResultsDataBarS-0-0').text
+          end
+        end
+      end
+
+    end
+    return barcode
   end
 
   def login_driver_portal
@@ -102,5 +117,4 @@ class SearchPage
         @browser.switch_to.window(win_id) #switched to the required window
         @browser.manage.window.maximize
   end
-
 end

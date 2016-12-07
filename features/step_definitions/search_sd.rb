@@ -1,4 +1,5 @@
 Given(/^I launch the SCSB application$/) do
+  #on(CollectionPage).new_test
   visit(SearchPage)
 end
 
@@ -7,7 +8,8 @@ When(/^I login with valid credentails$/) do
 end
 
 Then(/^I should see search page with following elements:$/) do |table|
-
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
   table.rows.each do |element|
     case element.first
       when 'search box'
@@ -131,7 +133,7 @@ When(/^I search with invalid keyword in search box$/) do
 end
 
 Then(/^I should see error message as "(.*?)"$/) do |txt_invalid_msg|
-  txt_value = on(SearchPage).txt_searchResultsMsg_element.span_element.text
+  txt_value = on(SearchPage).txt_searchResultsMsg_element.text
   txt_invalid_msg.upcase.eql?(txt_value.upcase).should be_true, "Search result message hasn't displayed"
 end
 
@@ -150,6 +152,8 @@ Then(/^I should see cocunt of the bib records$/) do
 end
 
 When(/^I select each institution records count$/) do
+  on(SearchPage).btn_show_facts_element.click
+  sleep 3
   on(SearchPage).chck_NYPL_element.click
   on(SearchPage).chck_CUL_element.click
   on(SearchPage).chck_PUL_element.click
@@ -182,7 +186,9 @@ Then(/^I should match with total count of bib records$/) do
   @value.to_i.eql?(@values).should be_true, "Bib total records count is mismatch"
 end
 #TO uncheck the select/unselect all button and view approx error msg
-When(/^I uncheck the Select or Unselect All Facets Option$/) do
+When(/^I uncheck the Select or Unselect All Facets Option$/) do\
+  on(SearchPage).btn_show_facts_element.click
+   sleep 2
   on(SearchPage).chck_selectAllFacets_element.click
 end
 
@@ -230,6 +236,8 @@ end
 #-------automation5
 
 When(/^I uncheck Recap In and Out Check boxes$/) do
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
   on(SearchPage).chck_available_element.click
   on(SearchPage).chck_notAvailable_element.click
 
@@ -244,6 +252,8 @@ end
 #------------automation6
 
 When(/^I uncheck nypl, princeton and columbia Check boxes$/) do
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
   on(SearchPage).chck_owningInstitutionNYPL_element.click
   on(SearchPage).chck_owningInstitutionPUL_element.click
   on(SearchPage).chck_owningInstitutionCUL_element.click
@@ -391,6 +401,8 @@ end
 
 
 When(/^I uncheck all bib facets$/) do
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
   on(SearchPage).chck_owningInstitutionNYPL_element.click
   on(SearchPage).chck_owningInstitutionPUL_element.click
   on(SearchPage).chck_owningInstitutionCUL_element.click
@@ -406,6 +418,8 @@ end
 
 
 When(/^I uncheck all Item facets$/) do
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
   on(SearchPage).chck_shared_element.click
   on(SearchPage).chck_private_element.click
   on(SearchPage).chck_open_element.click

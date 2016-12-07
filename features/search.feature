@@ -62,7 +62,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "Author" name as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "Luyken, Lorenz" in search box
+     And I enter "Friese, Wilhelm" in search box
      And I select "Author" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -125,7 +125,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "ISBN" as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "8171305733" in search box
+     And I enter "0718305191" in search box
      And I select "ISBN" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -170,7 +170,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "Barcode" as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "33433014574291" in search box
+     And I enter "32101043878741" in search box
      And I select "Barcode" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -238,7 +238,7 @@ Feature: Search page
     When I select tital of bib record randomly
     Then I should navigate bib record detail page
 
- @automation
+ @automation @test
  Scenario: As a librarian, I can verify total of the bib records in search results
    Given I launch the SCSB application
     When I login with valid credential
