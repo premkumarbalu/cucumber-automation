@@ -49,11 +49,11 @@ Then(/^I should see search results with following elements:$/) do |table|
   table.rows.each do |elements|
     case elements.first
       when 'Barcode'
-        on(CollectionPage).txt_barcode_element.text.upcase.eql?(elements.first.upcase).should be_true, "Barcode text hasn't displayed"
+        on(CollectionPage).txt_barcode?.should be_true, "Barcode text hasn't displayed"
       when 'Title'
-        on(CollectionPage).txt_title_element.text.upcase.eql?(elements.first.upcase).should be_true, "Title text hasn't displayed"
+        on(CollectionPage).txt_title?.should be_true, "Title text hasn't displayed"
       when 'CGD'
-        on(CollectionPage).txt_cgd_element.text.upcase.eql?(elements.first.upcase).should be_true, "CGD text hasn't displayed"
+        on(CollectionPage).txt_cgd?.should be_true, "CGD text hasn't displayed"
     end
   end
 end
@@ -61,7 +61,8 @@ end
 When(/^I click on the title$/) do
   sleep 5
   on(CollectionPage).lnk_title_element.click
-  on(SearchPage).switch_browser_title('Collection Update')
+
+  #on(SearchPage).switch_browser_title('Collection Update')
   @current_page.wait_until(30,"Item detail page hasn't displayed"){on(CollectionPage).txt_item_details_element.visible?}
 end
 
@@ -74,7 +75,7 @@ Then(/^I should see item detail page with following elements$/) do |table|
       when 'Edit CGD radio Button'
         on(CollectionPage).btn_editcgdaction_element.visible?.should be_true, "Edit CGD button hasn't displayed"
       when 'Deaccession radio button'
-        on(CollectionPage).btn_deaccesionaction_element.visible?.should be_true, "Deaccession radio button hasn't displayed"
+        on(CollectionPage).btn_deaccesionaction?.should be_true, "Deaccession radio button hasn't displayed"
       when 'New CGD'
         on(CollectionPage).sel_newcgdfield_element.visible?.should be_true, "New CGD drop down hasn't displayed"
       when 'CGD Change Notes'
@@ -154,11 +155,11 @@ When(/^I navigate to item detail page$/) do
   step 'I should see item detail page'
 end
 
-Then(/^I should see error message (This is a mandatory field)$/) do |txt_err_msg|
+Then(/^I should see error message "(.*?)"$/) do |txt_err_msg|
   @current_page.text.upcase.include?(txt_err_msg.upcase).should be_true, "CGD Note error message hasn't displayed"
 end
 
-Then(/^I should see message (This is a mandatory field)$/) do |txt_err_msg|
+Then(/^I should see message (Please enter CGD Change Notes)$/) do |txt_err_msg|
   if @txt_cgd == 'Shared'
     @current_page.text.upcase.include?(txt_err_msg.upcase).should be_true, "CGD Note error message hasn't displayed"
   end
@@ -178,6 +179,7 @@ And(/^I enter deaccession notes$/) do
 end
 
 Then(/^I should see (The item has been successfully deaccessioned)$/) do |txt_msg|
+  @current_page.wait_until(30,"Deaccession success message hasn't displayed"){@current_page.div_element(:class=>'bg-success').visible?}
   @current_page.text.upcase.include?(txt_msg.upcase).should be_true, "Deaccession success message hasn't displayed"
 end
 
@@ -187,17 +189,21 @@ Then(/^I should see list of delivery location based on the customer code$/) do
 end
 
 When(/^I serach with the same barcode in collection UI$/) do
-  on(SearchPage).switch_browser_title('Search Records')
+  #on(SearchPage).switch_browser_title('Search Records')
+  on(CollectionPage).btn_close_element.click
+  sleep 2
   step 'I enter valid Barcode in collection search box'
   step 'I click Display Records'
 end
 
 When(/^I search with same barcode in collection UI$/) do
-  on(SearchPage).switch_browser_title('Search Records')
+  #on(SearchPage).switch_browser_title('Search Records')
+  on(CollectionPage).btn_close_element.click
+  sleep 2
   step 'I enter valid Barcode in collection search box'
   step 'I click Display Records'
 end
 
 Then(/^I should see updated CGD in the table view$/) do
-on(CollectionPage).CGD_status_element.value.upcase.eql?(@new_cgd.upcase).should be_true, "New CGD hasn't updated in collection UI page"
+on(CollectionPage).CGD_status_element.text.upcase.eql?(@new_cgd.upcase).should be_true, "New CGD hasn't updated in collection UI page"
 end

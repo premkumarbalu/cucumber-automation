@@ -46,7 +46,7 @@ Feature: Collection
 	|Title   |
 	|CGD     |
 
- @automation
+ @automation @test
  Scenario: As a librarian,I can click title to navigate item detail page of the barcode
    Given I launch the SCSB application
     When I login with valid credentials
@@ -93,7 +93,7 @@ Feature: Collection
 	 And I select edit CGD radio button
 	 And I select new CGD
 	 And I click submit
-	Then I should see message This is a mandatory field
+	Then I should see message Please enter CGD Change Notes
 	
 	
  @automation
@@ -146,7 +146,7 @@ Feature: Collection
 	 And I select deaccession radio button
      And I enter deaccession notes 
 	 And I click submit
-	Then I should see error message This is a mandatory field
+	Then I should see error message "This is a mandatory field"
 	
  @automation
  Scenario: As a librarian, I cann't deaccession the barcode without enter deaccession notes
@@ -158,6 +158,6 @@ Feature: Collection
 	 And I select deaccession radio button
      And I select delivery location
 	 And I click submit
-	 Then I should see error message This is a mandatory field
+	 Then I should see error message "Please enter Deaccession Notes"
 
 

@@ -4,25 +4,35 @@ class CollectionPage
 
   text_field       :txt_search_box,                                 :id => 'barcodeFieldId'
   button           :btn_displayrecords,                             :id => 'displayRecords'
-  span             :txt_note,                                       :xpath => ".//*[@id='collectionRecordsDivId']/div[1]/div/span"
-  div              :txt_collectionresults,                          :id => 'collectionResultsDiv'
+  div             :txt_note,                                        :id => "noteTextDivId"
+  div              :txt_collectionresults,                          :id => 'collection-result-table_wrapper'
 
-  table            :txt_barcode,                                    :xpath => ".//*[@id='collectionResults']/thead/tr/th[2]"
-  table            :txt_title,                                      :xpath => ".//*[@id='collectionResults']/thead/tr/th[3]"
-  table            :txt_cgd,                                        :xpath => ".//*[@id='collectionResults']/thead/tr/th[4]"
+  span             :txt_barcode,                                    :id => "barcodeSpanId"
+  link             :txt_title,                                      :id => "titleLinkId"
+  span             :txt_cgd,                                        :id => "cgdSpanId"
 
 
-  text_field       :lnk_title,                                      :xpath =>".//*[@id='displayResults-0']/td[3]/a"
-  div              :txt_item_details,                               :id => 'collectionUpdateDivId'
-  radio            :btn_editcgdaction,                              :id => 'editCgdAction'
-  radio            :btn_deaccesionaction,                           :id => 'deaccesionAction'
-  select           :sel_newcgdfield,                                :id => 'newCgdField'
-  text_field       :txt_cgdchangenotesfield,                        :id => 'cgdChangeNotesField'
+  link             :lnk_title,                                      :id =>"titleLinkId"
+  div              :txt_item_details,                               :id => 'collectionModalContent'
+  span             :btn_editcgdaction,                              :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[3]/div/div/div/div/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div[1]/label/span/i"
+  span             :btn_deaccesionaction,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[3]/div/div/div/div/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div[2]/label/span/i"
+
+  select           :sel_newcgdfield,                                :id => 'newCGD'
+  text_field       :txt_cgdchangenotesfield,                        :id => 'CGDChangeNotes'
   text_field       :txt_deaccessiontype,                            :id => 'deaccessionType'
-  select           :txt_deliverylocation,                           :id => 'deliveryLocation'
-  text_field       :txt_deaccessionnotesfield,                      :id => 'deaccessionNotesField'
+  select           :txt_deliverylocation,                           :id => 'DeliveryLocation'
+  text_field       :txt_deaccessionnotesfield,                      :id => 'DeaccessionNotes'
   button           :btn_collectionupdatebutton,                     :id => 'collectionUpdateButton'
-  text_field       :CGD_status,                                      :id => 'searchResultRows0.collectionGroupDesignation'
+  span              :CGD_status,                                     :id => 'cgdSpanId'
+  span              :CGD_status,                                     :id => 'cgdSpanId'
+  button           :btn_close,                                      :class =>'close'
 
 
-end
+  def testing
+    dp_connection = TestData.edit_database_connection
+    @new_data = populate_page_with dp_connection
+    return @new_data
+  end
+
+
+ end
