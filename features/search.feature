@@ -238,7 +238,7 @@ Feature: Search page
     When I select tital of bib record randomly
     Then I should navigate bib record detail page
 
- @automation @test
+ @automation
  Scenario: As a librarian, I can verify total of the bib records in search results
    Given I launch the SCSB application
     When I login with valid credential
@@ -271,14 +271,14 @@ Feature: Search page
     When I login with valid credential
     And  I uncheck the Select or Unselect All Facets Option
      And I click search button
-    Then I should see appropriate error message
+    Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
 
 #when Select or Unselect All Facets Option is checked then to verify whether results are displayed or not
  @automation
  Scenario: As a librarian , I can check the search results when all check boxes are defaultly checked
    Given I launch the SCSB application
     When I login with valid credential
-    And  When the Select or Unselect All Facets Option is Checked
+    And  I Select or Unselect All Facets Option is Checked
      And I click search button
     Then I should be able to see search results
 
@@ -361,7 +361,7 @@ Feature: Search page
     When I login with valid credential
      And I uncheck all bib facets
      And I click search button
-    Then I should see the error message as "At least one Bib Facet Box and one Item Facet Box needs to be checked to get results."
+   Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
 
  @automation
  Scenario:As a librarian, If I uncheck all Item facets then I should see error message
@@ -369,7 +369,7 @@ Feature: Search page
     When I login with valid credential
      And I uncheck all Item facets
      And I click search button
-    Then I should see the error message as "At least one Bib Facet Box and one Item Facet Box needs to be checked to get results."
+   Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
 
  @automation
  Scenario:As a librarian, If I click on hide facets icon then Bib and Item Facets should not display
@@ -385,7 +385,7 @@ Feature: Search page
      And I click on showFacetsIcon
     Then Bib and Item Facets should be enabled and display
 
- @automation
+ @automation @defect-RECAP-320
  Scenario: As a librarian,I can clear the search text in the search box
    Given I launch the SCSB application
     When I login with valid credential
