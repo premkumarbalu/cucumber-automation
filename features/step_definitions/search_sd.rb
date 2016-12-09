@@ -154,25 +154,28 @@ end
 When(/^I select each institution records count$/) do
   on(SearchPage).btn_show_facts_element.click
   sleep 3
-  on(SearchPage).chck_NYPL_element.click
-  on(SearchPage).chck_CUL_element.click
-  on(SearchPage).chck_PUL_element.click
+  on(SearchPage).click_facts('NYPL')
+  on(SearchPage).click_facts('Columbia')
+  on(SearchPage).click_facts('Princeton')
 
-  sleep 3
-  on(SearchPage).chck_NYPL_element.click
+  sleep 2
+  on(SearchPage).click_facts('NYPL')
   on(SearchPage).btn_search_element.click
   value_1 =  on(SearchPage).txt_total_value_element.text
   value_1 = value_1.gsub(",","")
 
-  on(SearchPage).chck_NYPL_element.click
-  on(SearchPage).chck_CUL_element.click
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
+  on(SearchPage).click_facts('NYPL')
+  on(SearchPage).click_facts('Columbia')
   on(SearchPage).btn_search_element.click
   value_2 =  on(SearchPage).txt_total_value_element.text
   value_2 = value_2.gsub(",","")
 
-
-  on(SearchPage).chck_CUL_element.click
-  on(SearchPage).chck_PUL_element.click
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
+  on(SearchPage).click_facts('Columbia')
+  on(SearchPage).click_facts('Princeton')
   on(SearchPage).btn_search_element.click
   value_3 =  on(SearchPage).txt_total_value_element.text
   value_3 = value_3.gsub(",","")
@@ -189,16 +192,17 @@ end
 When(/^I uncheck the Select or Unselect All Facets Option$/) do\
   on(SearchPage).btn_show_facts_element.click
    sleep 2
-  on(SearchPage).chck_selectAllFacets_element.click
+  on(SearchPage).click_facts("Select / Unselect All Facets")
 end
 
-Then(/^I should see appropriate error message$/) do
-  on(SearchPage).txt_alert_alert_info_element.visible?.should be_true, "At least one Search Facet Box needs to be checked to get results"
+Then(/^I should see error message (At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.)$/) do |txt_error_msg|
+  msg = on(SearchPage).txt_alert_alert_info_element.text
+  msg.upcase.eql?(txt_error_msg.upcase).should be_true, "At least one Search Facet Box needs to be checked to get results"
 end
 
 
 #When select/unselectAll button is checked ,check whether search results are appeared or not
-When(/^When the Select or Unselect All Facets Option is Checked$/) do
+When(/^I Select or Unselect All Facets Option is Checked$/) do
   on(SearchPage)
 end
 
@@ -209,26 +213,14 @@ end
 
 #To verify reset with New Search button
 When(/^I click the New Search button$/) do
+  on(SearchPage).btn_search_element.click
   on(SearchPage).btn_newSearch_element.click
 end
 
 Then(/^I should be able to see Reset Search Page$/) do
   on(SearchPage).txt_search_box_element.visible?.should be_true, "Search box not displayed on search page"
-  on(SearchPage).txt_search_box_element.value = " "
-  on(SearchPage).chck_owningInstitutionNYPL_element.enabled?
-  on(SearchPage).chck_owningInstitutionPUL_element.enabled?
-  on(SearchPage).chck_owningInstitutionCUL_element.enabled?
-  on(SearchPage).chck_shared_element.enabled?
-  on(SearchPage).chck_private_element.enabled?
-  on(SearchPage).chck_open_element.enabled?
-  on(SearchPage).chck_available_element.enabled?
-  on(SearchPage).chck_notAvailable_element.enabled?
-  on(SearchPage).chck_noRestriction_element.enabled?
-  on(SearchPage).chck_inLibraryUse_element.enabled?
-  on(SearchPage).chck_supervisedUse_element.enabled?
-  on(SearchPage).chck_monograph_element.enabled?
-  on(SearchPage).chck_serials_element.enabled?
-  on(SearchPage).chck_others_element.enabled?
+  txt_serach_box = on(SearchPage).txt_search_box_element.attribute(:placeholder)
+  txt_serach_box.include?('Type Text Here').should be_true,"Search box is not empty"
   on(SearchPage).table_searchResultsDiv_element.visible?.should be_false,"Search Results Displayed"
 end
 
@@ -238,8 +230,8 @@ end
 When(/^I uncheck Recap In and Out Check boxes$/) do
   on(SearchPage).btn_show_facts_element.click
   sleep 2
-  on(SearchPage).chck_available_element.click
-  on(SearchPage).chck_notAvailable_element.click
+  on(SearchPage).click_facts("In ReCAP")
+  on(SearchPage).click_facts("Out")
 
 end
 
@@ -254,9 +246,9 @@ end
 When(/^I uncheck nypl, princeton and columbia Check boxes$/) do
   on(SearchPage).btn_show_facts_element.click
   sleep 2
-  on(SearchPage).chck_owningInstitutionNYPL_element.click
-  on(SearchPage).chck_owningInstitutionPUL_element.click
-  on(SearchPage).chck_owningInstitutionCUL_element.click
+  on(SearchPage).click_facts('NYPL')
+  on(SearchPage).click_facts('Columbia')
+  on(SearchPage).click_facts('Princeton')
 end
 
 Then(/^Search results should be displayed$/) do
@@ -302,6 +294,7 @@ end
 
 When(/^I click on Next Button$/) do
   sleep 5
+  debugger
   on(SearchPage).btn_nextbutton_element.click
 end
 
@@ -339,76 +332,36 @@ end
 
 
 When(/^I click on hideFacetsIcon$/) do
-  on(SearchPage).image_showFacetsIcon_element.click
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
 end
 
 Then(/^Bib and Item Facets should not display$/) do
-  on(SearchPage).chck_selectAllFacets_element.visible?.should be_false,""
-  on(SearchPage).chck_owningInstitutionNYPL_element.visible?.should be_false,""
-  on(SearchPage).chck_owningInstitutionPUL_element.visible?.should be_false,""
-  on(SearchPage).chck_owningInstitutionCUL_element.visible?.should be_false,""
-  on(SearchPage).chck_shared_element.visible?.should be_false,""
-  on(SearchPage).chck_private_element.visible?.should be_false,""
-  on(SearchPage).chck_open_element.visible?.should be_false,""
-  on(SearchPage).chck_available_element.visible?.should be_false,""
-  on(SearchPage).chck_notAvailable_element.visible?.should be_false,""
-  on(SearchPage).chck_noRestriction_element.visible?.should be_false,""
-  on(SearchPage).chck_inLibraryUse_element.visible?.should be_false,""
-  on(SearchPage).chck_supervisedUse_element.visible?.should be_false,""
-  on(SearchPage).chck_monograph_element.visible?.should be_false,""
-  on(SearchPage).chck_serials_element.visible?.should be_false,""
-  on(SearchPage).chck_others_element.visible?.should be_false,""
+  on(SearchPage).facts_window_element.visible?.should be_false,"Facts window has displayed"
 end
 
 
 When(/^I click on showFacetsIcon$/) do
-  on(SearchPage).image_showFacetsIcon_element.click
-  on(SearchPage).image_showFacetsIcon_element.click
+  on(SearchPage).btn_show_facts_element.click
+  sleep 2
 end
 
 Then(/^Bib and Item Facets should be enabled and display$/) do
-  on(SearchPage).chck_selectAllFacets_element.enabled?
-  on(SearchPage).chck_owningInstitutionNYPL_element.enabled?
-  on(SearchPage).chck_owningInstitutionPUL_element.enabled?
-  on(SearchPage).chck_owningInstitutionCUL_element.enabled?
-  on(SearchPage).chck_shared_element.enabled?
-  on(SearchPage).chck_private_element.enabled?
-  on(SearchPage).chck_open_element.enabled?
-  on(SearchPage).chck_available_element.enabled?
-  on(SearchPage).chck_notAvailable_element.enabled?
-  on(SearchPage).chck_noRestriction_element.enabled?
-  on(SearchPage).chck_inLibraryUse_element.enabled?
-  on(SearchPage).chck_supervisedUse_element.enabled?
-  on(SearchPage).chck_monograph_element.enabled?
-  on(SearchPage).chck_serials_element.enabled?
-  on(SearchPage).chck_others_element.enabled?
-  on(SearchPage).chck_selectAllFacets_element.visible?.should be_true,""
-  on(SearchPage).chck_owningInstitutionNYPL_element.visible?.should be_true,""
-  on(SearchPage).chck_owningInstitutionPUL_element.visible?.should be_true,""
-  on(SearchPage).chck_owningInstitutionCUL_element.visible?.should be_true,""
-  on(SearchPage).chck_shared_element.visible?.should be_true,""
-  on(SearchPage).chck_private_element.visible?.should be_true,""
-  on(SearchPage).chck_open_element.visible?.should be_true,""
-  on(SearchPage).chck_available_element.visible?.should be_true,""
-  on(SearchPage).chck_notAvailable_element.visible?.should be_true,""
-  on(SearchPage).chck_noRestriction_element.visible?.should be_true,""
-  on(SearchPage).chck_inLibraryUse_element.visible?.should be_true,""
-  on(SearchPage).chck_supervisedUse_element.visible?.should be_true,""
-  on(SearchPage).chck_monograph_element.visible?.should be_true,""
-  on(SearchPage).chck_serials_element.visible?.should be_true,""
-  on(SearchPage).chck_others_element.visible?.should be_true,""
+  on(SearchPage).facts_window?.should be_true,"Facts window hasn't displayed"
 end
 
 
 When(/^I uncheck all bib facets$/) do
   on(SearchPage).btn_show_facts_element.click
   sleep 2
-  on(SearchPage).chck_owningInstitutionNYPL_element.click
-  on(SearchPage).chck_owningInstitutionPUL_element.click
-  on(SearchPage).chck_owningInstitutionCUL_element.click
-  on(SearchPage).chck_monograph_element.click
-  on(SearchPage).chck_serials_element.click
-  on(SearchPage).chck_others_element.click
+  on(SearchPage).click_facts('NYPL')
+  on(SearchPage).click_facts('Columbia')
+  on(SearchPage).click_facts('Princeton')
+  on(SearchPage).click_facts('Monograph')
+  on(SearchPage).click_facts('Serials')
+  on(SearchPage).click_facts('Others')
 end
 
 Then(/^I should see the error message as "(.*?)"$/) do |errormessage|
@@ -420,14 +373,14 @@ end
 When(/^I uncheck all Item facets$/) do
   on(SearchPage).btn_show_facts_element.click
   sleep 2
-  on(SearchPage).chck_shared_element.click
-  on(SearchPage).chck_private_element.click
-  on(SearchPage).chck_open_element.click
-  on(SearchPage).chck_available_element.click
-  on(SearchPage).chck_notAvailable_element.click
-  on(SearchPage).chck_noRestriction_element.click
-  on(SearchPage).chck_inLibraryUse_element.click
-  on(SearchPage).chck_supervisedUse_element.click
+  on(SearchPage).click_facts('Shared')
+  on(SearchPage).click_facts('Private')
+  on(SearchPage).click_facts('Open')
+  on(SearchPage).click_facts("In ReCAP")
+  on(SearchPage).click_facts('Out')
+  on(SearchPage).click_facts("No Restriction")
+  on(SearchPage).click_facts("In Library Use")
+  on(SearchPage).click_facts("Supervised Use")
 end
 
 When(/^I click on clear button$/) do

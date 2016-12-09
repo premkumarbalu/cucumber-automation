@@ -44,7 +44,7 @@ class SearchPage
   button           :btn_request,                                    :xpath =>"html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div[3]/button[2]"
   button           :btn_export,                                     :id => 'export'
   div              :txt_searchResultsMsg,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div/div/span[2]"
-  div              :txt_alert_alert_info,                           :class => 'alert-info'
+  span              :txt_alert_alert_info,                          :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div/div/span[2]"
   link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitleS-2'
   div              :tbl_bib_detail_page,                            :id => 'marcRecordViewDivId'
   div              :txt_total_value,                                :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div[1]/div[3]/span[1]/span"
@@ -59,6 +59,7 @@ class SearchPage
   image            :image_showItemsIcon,                            :id => 'showItemsIcon-5'
   table            :tbl_searchItemResultsRow5,                      :id => 'searchItemResultsRow-5'
   span             :btn_show_facts,                                 :id => 'showFacets'
+  div              :facts_window,                                   :id => 'search-filter'
 
   #-------------------------------------------------------------------------------------
   text_field       :password,                             :xpath => "//input[@type='password']"
@@ -117,4 +118,19 @@ class SearchPage
         @browser.switch_to.window(win_id) #switched to the required window
         @browser.manage.window.maximize
   end
+
+
+  def click_facts(txt_name)
+
+    facts = div_elements(:class=>'checkbox')
+
+    facts.each do |element|
+      if element.label_element.text.upcase == txt_name.upcase
+         element.label_element.span_element.click
+         break
+      end
+    end
+  end
+
 end
+
