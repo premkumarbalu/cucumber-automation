@@ -175,7 +175,7 @@ Feature: Search page
      And I click search button
     Then I should see the search results
 
- @automation
+ @automation 
  Scenario: As a librarian, I can search with valid keyword , application should display the search result with two buttons
    Given I launch the SCSB application
     When I login with valid credential
@@ -222,7 +222,7 @@ Feature: Search page
     When I select "Export Selected Records"
     Then The selected records are exported as a CSV file in the same format as the grid
 
- @automation
+ @automation 
  Scenario: As a librarian, I search with invalid keyword or junk keyword
    Given I launch the SCSB application
     When I login with valid credential
@@ -265,7 +265,7 @@ Feature: Search page
     When I click author sorting arrow
     Then I should see author sorted based on the alphabets
 
- @automation
+ @automation 
  Scenario: As a librarian , I can uncheck the Select or Unselect All Facets Option
    Given I launch the SCSB application
     When I login with valid credential

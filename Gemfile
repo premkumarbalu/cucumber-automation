@@ -32,17 +32,27 @@ gem "rspec-core", "2.12.2"
 gem "rspec-expectations", "2.12.1"
 gem "rspec-mocks", "2.12.2"
 gem "ruby-debug", "0.10.6"
-gem "ruby-debug-base", "0.10.6"
+gem "ruby-debug-base", "0.10.6"                                                                                                                                                                                                       d
 gem "rubyzip", "1.2.0"
 gem "selenium-webdriver", "2.53.3"
 gem "watir-webdriver", "0.9.1"
 gem "websocket", "1.0.7"
 gem "xpath", "0.1.4"
-gem  "headless", "2.2.3"
+gem  "headless", "2.2.2"
 gem "activerecord", "4.0.0"
-gem "activerecord-jdbc-adapter", "1.3.2"
+gem "activerecord-jdbc-adapter", "1.3.21"
 gem "activerecord-jdbcsqlite3-adapter", "1.3.2"
 gem "activerecord-oracle_enhanced-adapter", "1.5.1"
+gem 'activerecord-jdbcmysql-adapter', '1.3.21'
+gem 'net-ssh', '~> 2.0'
+gem 'net-ssh-gateway', '1.1.0'
+gem 'jdbc-mysql', '5.1.38'
+gem  'dbi'
+gem  'dbd-jdbc'
+
+#gem 'activerecord-jdbcpostgresql-adapter', '~> 1.3', '>= 1.3.20'
+
+
 =begin
 gem 'selenium-webdriver', '~> 2.46'
 gem "gherkin", "2.12.0"
