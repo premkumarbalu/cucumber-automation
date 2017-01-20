@@ -5,8 +5,8 @@ class SearchPage
   #page_url ENV['URL']
 
   #page_url"http://dev-recap.htcinc.com:9090/search"
-  #page_url "http://uat-recap.htcinc.com:9090/search"
-  page_url "http://tst-recap.htcinc.com:9090/search"
+ # page_url "http://uat-recap.htcinc.com:9090/search"
+ # page_url "http://tst-recap.htcinc.com:9090"
   #Search page
 
   text_field       :txt_search_box,                                 :id => 'fieldValue'
@@ -22,7 +22,7 @@ class SearchPage
   button           :btn_lastBottom,                                 :id => 'lastBottom'
   div              :table_searchResultsDiv,                         :id => 'searchResultsDiv'
   span             :image_showFacetsIcon,                           :id => 'showFacets'
-  image            :image_clearSearchText,                          :id => 'clearSearchText'
+  image            :image_clearSearchText,                          :class => 'add-clear-x'
   link             :tab_collection,                                 :class =>'tab-collection'
   #Searchpage--checkboxes----
   checkbox         :chck_owningInstitutionNYPL,                     :id => 'owningInstitutionNYPL'
@@ -41,13 +41,14 @@ class SearchPage
   checkbox         :chck_others,                                    :id => 'others'
 
   #Search Result
-  button           :btn_request,                                    :xpath =>"html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div[3]/button[2]"
+  button           :btn_request,                                    :xpath =>"html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div[4]/div[2]/button[2]"
   button           :btn_export,                                     :id => 'export'
-  div              :txt_searchResultsMsg,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div/div/span[2]"
-  span              :txt_alert_alert_info,                          :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div/div/span[2]"
+  span             :txt_searchResultsMsg,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div/div/span[2]"
+  span             :txt_alert_alert_info,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div/div/span[2]"
+                                                                             
   link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitleS-2'
   div              :tbl_bib_detail_page,                            :id => 'marcRecordViewDivId'
-  div              :txt_total_value,                                :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[3]/div[1]/div[3]/span[1]/span"
+  div              :txt_total_value,                                :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div[2]/div[3]/span[1]/span"
   checkbox         :chck_NYPL,                                      :id => 'owningInstitutionNYPL'
   checkbox         :chck_CUL,                                       :id => 'owningInstitutionCUL'
   checkbox         :chck_PUL,                                       :id => 'owningInstitutionPUL'
@@ -67,6 +68,7 @@ class SearchPage
   link             :lnk_forgot,                           :class => 'small-text'
   text_field       :int_forgot_email,                     :class => 'form-control'
   div              :txt_alert_msg,                        :class => 'alert-success'
+  link             :lnk_logout,                           :class => 'logout'
 
 
   def get_valid_barcode

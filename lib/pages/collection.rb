@@ -4,7 +4,7 @@ class CollectionPage
 
   text_field       :txt_search_box,                                 :id => 'barcodeFieldId'
   button           :btn_displayrecords,                             :id => 'displayRecords'
-  div             :txt_note,                                        :id => "noteTextDivId"
+  div              :txt_note,                                        :id => "noteTextDivId"
   div              :txt_collectionresults,                          :id => 'collection-result-table_wrapper'
 
   span             :txt_barcode,                                    :id => "barcodeSpanId"
@@ -14,8 +14,8 @@ class CollectionPage
 
   link             :lnk_title,                                      :id =>"titleLinkId"
   div              :txt_item_details,                               :id => 'collectionModalContent'
-  span             :btn_editcgdaction,                              :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[3]/div/div/div/div/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div[1]/label/span/i"
-  span             :btn_deaccesionaction,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[3]/div/div/div/div/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div[2]/label/span/i"
+  span             :btn_editcgdaction,                              :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[3]/div/div/div/div/div[2]/div/div[3]/div[2]/div/div/div[2]/div[1]/div/div/div[1]/label/span/i"
+  span             :btn_deaccesionaction,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[3]/div/div/div/div/div[2]/div/div[3]/div[2]/div/div/div[2]/div[1]/div/div/div[2]/label/span"
 
   select           :sel_newcgdfield,                                :id => 'newCGD'
   text_field       :txt_cgdchangenotesfield,                        :id => 'CGDChangeNotes'
@@ -23,8 +23,8 @@ class CollectionPage
   select           :txt_deliverylocation,                           :id => 'DeliveryLocation'
   text_field       :txt_deaccessionnotesfield,                      :id => 'DeaccessionNotes'
   button           :btn_collectionupdatebutton,                     :id => 'collectionUpdateButton'
-  span              :CGD_status,                                     :id => 'cgdSpanId'
-  span              :CGD_status,                                     :id => 'cgdSpanId'
+  span             :CGD_status,                                    :id => 'cgdSpanId'
+  span             :CGD_status,                                    :id => 'cgdSpanId'
   button           :btn_close,                                      :class =>'close'
 
 

@@ -1,6 +1,6 @@
 Feature: Collection
 
- @automation
+ @automation @test
  Scenario: As a librarian,I can view Collection page
    Given I launch the SCSB application
     When I login with valid credentials
@@ -46,7 +46,7 @@ Feature: Collection
 	|Title   |
 	|CGD     |
 
- @automation @test
+ @automation
  Scenario: As a librarian,I can click title to navigate item detail page of the barcode
    Given I launch the SCSB application
     When I login with valid credentials

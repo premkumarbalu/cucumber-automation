@@ -1,10 +1,10 @@
 Given(/^I launch the SCSB application$/) do
   #on(CollectionPage).new_test
-  visit(SearchPage)
+  visit(LoginPage)
 end
 
 When(/^I login with valid credentails$/) do
-  #pending # express the regexp above with the code you wish you had
+on(LoginPage).login_with_valid_credentials
 end
 
 Then(/^I should see search page with following elements:$/) do |table|
@@ -35,11 +35,13 @@ Then(/^I should see search page with following elements:$/) do |table|
 end
 
 When(/^I login with valid credential$/) do
-  #pending # express the regexp above with the code you wish you had
+  on(LoginPage).login_with_valid_credentials
+  #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 
 When(/^I login with valid credentials$/) do
-  #pending # express the regexp above with the code you wish you had
+  on(LoginPage).login_with_valid_credentials
+  #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 
 Then(/^I should see the following checkbox filters are checked by defaultly:$/) do |table|
@@ -69,6 +71,7 @@ end
 
 When(/^I click search button$/) do
   on(SearchPage).btn_search_element.click
+  sleep 5
 end
 
 Then(/^I should see the search results$/) do
@@ -85,46 +88,6 @@ Then(/^I should see the following buttons:$/) do |table|
     end
 
   end
-end
-
-When(/^I click clear button$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I Should see content cleared in the search text field$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should see all checkboxe filters are cheked by default$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I click "(.*?)" button$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I Should see default search page$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I search with valid keyword in search box$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I Should see search results in application$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I select "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should navigate new tab with create request with the barcode auto populated is open$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^The selected records are exported as a CSV file in the same format as the grid$/) do
-  pending # express the regexp above with the code you wish you had
 end
 
 When(/^I search with invalid keyword in search box$/) do
@@ -196,6 +159,7 @@ When(/^I uncheck the Select or Unselect All Facets Option$/) do\
 end
 
 Then(/^I should see error message (At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.)$/) do |txt_error_msg|
+  sleep 5
   msg = on(SearchPage).txt_alert_alert_info_element.text
   msg.upcase.eql?(txt_error_msg.upcase).should be_true, "At least one Search Facet Box needs to be checked to get results"
 end
@@ -290,11 +254,8 @@ Then(/^I should see the following checkbox are checked$/) do |table|
   end
 end
 
-
-
 When(/^I click on Next Button$/) do
   sleep 5
-  debugger
   on(SearchPage).btn_nextbutton_element.click
 end
 
