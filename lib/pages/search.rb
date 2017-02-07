@@ -44,7 +44,8 @@ class SearchPage
   button           :btn_request,                                    :xpath =>"html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div[4]/div[2]/button[2]"
   button           :btn_export,                                     :id => 'export'
   span             :txt_searchResultsMsg,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div/div/span[2]"
-  span             :txt_alert_alert_info,                           :xpath => "html/body/section/div/div/div/div/div/form/fieldset/div[2]/div/div/div[2]/div/div/span[2]"
+  span             :txt_alert_alert_info,                           :xpath => ".//*[@id='search-form']/fieldset/div[2]/div/div/div[2]/div/div/span[2]"
+
                                                                              
   link             :lnk_title_of_bib,                               :id => 'searchResultsDataTitleS-2'
   div              :tbl_bib_detail_page,                            :id => 'marcRecordViewDivId'
@@ -69,6 +70,14 @@ class SearchPage
   text_field       :int_forgot_email,                     :class => 'form-control'
   div              :txt_alert_msg,                        :class => 'alert-success'
   link             :lnk_logout,                           :class => 'logout'
+
+  link          :tab_search,                               :class => 'tab-search'
+  link          :tab_collection,                           :class =>'tab-collection'
+  link          :tab_request,                              :class => 'tab-request'
+  link          :tab_reports,                              :class => 'tab-reports'
+  link          :tab_role,                                 :class => 'tab-role'
+  link          :tab_user,                                 :class => 'tab-users'
+
 
 
   def get_valid_barcode

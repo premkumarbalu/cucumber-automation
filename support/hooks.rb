@@ -4,11 +4,12 @@ Before do |scenario|
   $log = Logger.new("log/loffile#{Time.now.strftime('%Y_%m_%d-%HH_%MM_%SS')}.log")
   $log.debug("Scenario: #{scenario.name}")
 
-  headless = Headless.new
-  headless.start
-  #headless.video.start_capture
+   headless = Headless.new
+   headless.start
+   #headless.video.start_capture
 
-  @browser = Selenium::WebDriver.for :ff
+   @browser = Selenium::WebDriver.for :ff
+  # @browser = Selenium::WebDriver.for :chrome
    @browser.manage.window.maximize
 end
 

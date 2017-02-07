@@ -62,7 +62,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "Author" name as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "Friese, Wilhelm" in search box
+     And I enter "Tomasino, Humberto" in search box
      And I select "Author" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -170,7 +170,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "Barcode" as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "32101043878741" in search box
+     And I enter "33433013571991" in search box
      And I select "Barcode" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -265,7 +265,7 @@ Feature: Search page
     When I click author sorting arrow
     Then I should see author sorted based on the alphabets
 
- @automation 
+ @automation @defect-RECAP-431
  Scenario: As a librarian , I can uncheck the Select or Unselect All Facets Option
    Given I launch the SCSB application
     When I login with valid credential
@@ -355,7 +355,7 @@ Feature: Search page
     When I select option "100" in show checkbox
     Then I should see the 100 search results
 
- @automation
+ @automation @defect-RECAP-431
  Scenario:As a librarian, If I uncheck all bib facets then I should see error message
    Given I launch the SCSB application
     When I login with valid credential
@@ -363,7 +363,7 @@ Feature: Search page
      And I click search button
    Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
 
- @automation
+ @automation @defect-RECAP-431
  Scenario:As a librarian, If I uncheck all Item facets then I should see error message
    Given I launch the SCSB application
     When I login with valid credential
@@ -385,7 +385,7 @@ Feature: Search page
      And I click on showFacetsIcon
     Then Bib and Item Facets should be enabled and display
 
- @automation @defect-RECAP-320
+ @automation 
  Scenario: As a librarian,I can clear the search text in the search box
    Given I launch the SCSB application
     When I login with valid credential

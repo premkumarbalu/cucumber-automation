@@ -1,0 +1,6 @@
+Createrole:
+    txt_network_login : ~"testing#{Time.now.to_i/2}"
+    slt_insti         : ~(['PUL','CUL','NYPL'].sample)
+    txt_desc          : testing
+    txt_emailid       : test@gmail.com
+ #~(['Dr', 'Captain', 'Mr.', 'Sir'].sample
