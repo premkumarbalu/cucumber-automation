@@ -31,7 +31,7 @@ class RolesPage
 
   def create_admin_role
     navigate_to_user_page
-    data = data_for(:Createrole)
+    data = data_for(:createrole)
     populate_page_with data
     $networklogin = txt_network_login_element.value
     $networkinsti = slt_insti_element.value
@@ -42,7 +42,7 @@ class RolesPage
 
   def create_searchrequest_role
     navigate_to_user_page
-    data = data_for(:Createrole)
+    data = data_for(:createrole)
     populate_page_with data
     $networklogin = txt_network_login_element.value
     $networkinsti = slt_insti_element.value
@@ -53,7 +53,7 @@ class RolesPage
 
   def create_collection_role
     navigate_to_user_page
-    data = data_for(:Createrole)
+    data = data_for(:createrole)
     populate_page_with data
     $networklogin = txt_network_login_element.value
     $networkinsti = slt_insti_element.value
@@ -64,7 +64,7 @@ class RolesPage
 
   def create_recap_role
     navigate_to_user_page
-    data = data_for(:Createrole)
+    data = data_for(:createrole)
     populate_page_with data
     $networklogin = txt_network_login_element.value
     $networkinsti = slt_insti_element.value
@@ -75,7 +75,7 @@ class RolesPage
 
   def create_search_role
     navigate_to_user_page
-    data = data_for(:Createrole)
+    data = data_for(:createrole)
     populate_page_with data
     $networklogin = txt_network_login_element.value
     $networkinsti = slt_insti_element.value

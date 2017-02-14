@@ -1,6 +1,26 @@
-Createrole:
+createrole:
     txt_network_login : ~"testing#{Time.now.to_i/2}"
     slt_insti         : ~(['PUL','CUL','NYPL'].sample)
-    txt_desc          : testing
-    txt_emailid       : test@gmail.com
- #~(['Dr', 'Captain', 'Mr.', 'Sir'].sample
+    txt_desc          : "testing"
+    txt_emailid       : "test@gmail.com"
+
+pul_patron_information:
+    txt_patronbarcode: ~(['45678912', '45678915', '45678916', '45678917'].sample)
+    txt_emailid: "test@gmail.com"
+    #sele_requestinginsti: "PUL"
+    txt_notes: "test@gmail.com"
+    delivery_location: "PU Standard"
+
+cul_patron_information:
+    txt_patronbarcode: ~(['RECAPTST02','RECAPTST03'].sample)
+    txt_emailid: "test@gmail.com"
+    #sele_requestinginsti: "PUL"
+    txt_notes: "test@gmail.com"
+    delivery_location: "CU Standard"
+
+nypl_patron_information:
+    txt_patronbarcode: ~(['23333097542730'].sample)
+    txt_emailid: "test@gmail.com"
+    #sele_requestinginsti: "PUL"
+    txt_notes: "test@gmail.com"
+    delivery_location: "NYPL Standard"
