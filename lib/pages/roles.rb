@@ -37,6 +37,9 @@ class RolesPage
     $networkinsti = slt_insti_element.value
     txt_role_element.click
     select_admin_element.click
+    sleep 2
+    txt_role_element.click
+    sleep 2
     btn_create_element.click
   end
 
@@ -44,44 +47,28 @@ class RolesPage
     navigate_to_user_page
     data = data_for(:createrole)
     populate_page_with data
-    $networklogin = txt_network_login_element.value
-    $networkinsti = slt_insti_element.value
-    txt_role_element.click
-    select_searchrequest_element.click
-    btn_create_element.click
+    create_roles
   end
 
   def create_collection_role
     navigate_to_user_page
     data = data_for(:createrole)
     populate_page_with data
-    $networklogin = txt_network_login_element.value
-    $networkinsti = slt_insti_element.value
-    txt_role_element.click
-    select_collection_element.click
-    btn_create_element.click
+    create_roles
   end
 
   def create_recap_role
     navigate_to_user_page
     data = data_for(:createrole)
     populate_page_with data
-    $networklogin = txt_network_login_element.value
-    $networkinsti = slt_insti_element.value
-    txt_role_element.click
-    select_recap_element.click
-    btn_create_element.click
+    create_roles
   end
 
   def create_search_role
     navigate_to_user_page
     data = data_for(:createrole)
     populate_page_with data
-    $networklogin = txt_network_login_element.value
-    $networkinsti = slt_insti_element.value
-    txt_role_element.click
-    select_search_element.click
-    btn_create_element.click
+    create_roles
   end
 
   def navigate_to_user_page
@@ -91,6 +78,16 @@ class RolesPage
     wait_until(30,"roles page hasn't displayed"){txt_network_login_element.visible?}
   end
 
+  def create_roles
+    $networklogin = txt_network_login_element.value
+    $networkinsti = slt_insti_element.value
+    txt_role_element.click
+    select_admin_element.click
+    sleep 2
+    txt_role_element.click
+    sleep 2
+    btn_create_element.click
+  end
 
 end
 
