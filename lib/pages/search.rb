@@ -81,8 +81,21 @@ class SearchPage
 
 
   def get_valid_barcode
+    btn_show_facts_element.click
+    sleep 2
+    click_facts('Out')
+    sleep 2
     btn_search
     wait_until(30, ""){table_searchResultsDiv_element.visible?}
+     barcode = []
+
+    i = 0
+    begin
+      barcode << span_element(:id=>"searchResultsDataBarS-#{i}").text rescue nil
+      i= i+1
+    end while i <=15
+    barcode = barcode.reject{|i| i.empty?}
+=begin
     barcode = span_element(:id=>"searchResultsDataBarS-0").text
     if barcode == ""
       barcode = span_element(:id=>"searchResultsDataBarS-1").text
@@ -96,9 +109,9 @@ class SearchPage
           end
         end
       end
-
     end
-    return barcode
+=end
+    return barcode.sample
   end
 
   def login_driver_portal

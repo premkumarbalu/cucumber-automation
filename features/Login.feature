@@ -4,7 +4,7 @@ Feature: Login
  Scenario: As a Recap user,I can view error message without enter username, password & Institution
    Given I launch the SCSB application
     When I click submit button
-	  Then I should see following error messages:
+    Then I should see following error messages:
 	 |messages                       |
 	 |Please specify a username.     |
 	 |Please select your institution |
@@ -70,7 +70,7 @@ Feature: Login
 
 	Examples:
      |symbols|Institution_webpage           |
-     |Recap  |http://recap.princeton.edu/   |
+     #|Recap  |http://recap.princeton.edu/   |
      |CUL    |http://www.columbia.edu/      |
      |PUL    |http://www.princeton.edu/main/|
      |NYPL   |https://www.nypl.org/         |
@@ -84,7 +84,7 @@ Feature: Login
 
 	Examples:
      |links                      |webpage                                             |
-     |AboutRecap                 |https://recap.princeton.edu/                        |
+     #|AboutRecap                 |https://recap.princeton.edu/                        |
      |Facility & Storage         |https://recap.princeton.edu/facility-storage        |
      |Operations & Statistics    |https://recap.princeton.edu/operations-statistics   |
      |Collections & Services     |https://recap.princeton.edu/collections-services    |

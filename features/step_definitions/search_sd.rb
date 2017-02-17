@@ -152,7 +152,7 @@ Then(/^I should match with total count of bib records$/) do
   @value.to_i.eql?(@values).should be_true, "Bib total records count is mismatch"
 end
 #TO uncheck the select/unselect all button and view approx error msg
-When(/^I uncheck the Select or Unselect All Facets Option$/) do\
+When(/^I uncheck the Select or Unselect All Facets Option$/) do
   on(SearchPage).btn_show_facts_element.click
    sleep 2
   on(SearchPage).click_facts("Select / Unselect All Facets")
