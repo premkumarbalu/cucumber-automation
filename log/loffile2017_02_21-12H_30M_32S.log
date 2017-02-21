@@ -1,0 +1,2 @@
+# Logfile created on 2017-02-21 12:30:32 +0530 by logger.rb/v1.2.7
+D, [2017-02-21T12:30:32.520000 #6648] DEBUG -- : Scenario: As a Recap user,I can view error message without enter username, password & Institution
