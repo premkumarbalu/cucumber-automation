@@ -32,7 +32,7 @@ gem "rspec-core", "2.12.2"
 gem "rspec-expectations", "2.12.1"
 gem "rspec-mocks", "2.12.2"
 gem "ruby-debug", "0.10.6"
-gem "ruby-debug-base", "0.10.6"                                                                                                                                                                                                       d
+#gem "ruby-debug-base", "0.10.6"                                                                                                                                                                                                       d
 gem "rubyzip", "1.2.0"
 gem "selenium-webdriver", "2.53.3"
 gem "watir-webdriver", "0.9.1"
