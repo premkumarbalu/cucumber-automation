@@ -24,7 +24,7 @@ Feature: Collection
 	
   @automation
  Scenario: As a librarian,I can search with invalid barcode in Collection page
-   Given I launch the SCSB applicationd
+   Given I launch the SCSB application
     When I login with valid credential
 	 And I select Collection tab on the page
     Then I should see collection UI page

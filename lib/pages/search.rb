@@ -84,6 +84,7 @@ class SearchPage
     btn_show_facts_element.click
     sleep 2
     click_facts('Out')
+    click_facts('Private')
     sleep 2
     btn_search
     wait_until(30, ""){table_searchResultsDiv_element.visible?}

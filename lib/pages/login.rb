@@ -2,8 +2,9 @@
 class LoginPage
   include PageObject
 
-  page_url "http://tst-recap.htcinc.com:9091"
+  #page_url "http://tst-recap-direct.htcinc.com:9091"
   #page_url "http://uat-recap.htcinc.com:9091"
+ page_url "http://192.168.55.198:9091"
 
   div           :login_cont,                        :class => 'login-content'
   text_field    :txt_login,                         :id=>'networkloginid'
@@ -22,14 +23,26 @@ class LoginPage
   link          :lnk_collections,                   :xpath => 'html/body/div[2]/div/div/div/div[2]/ul/li[4]/a'
   link          :lnk_information,                   :xpath => 'html/body/div[2]/div/div/div/div[2]/ul/li[5]/a'
 
+
   paragraph     :txt_userNameError,                 :id => 'userNameError'
 
 
+  #HTC User
+  text_field     :htc_login,                       :id => 'username'
+  text_field     :htc_pwd,                         :id => 'password'
+  button         :lnk_login,                       :name => 'submit'
+
+  text_field       :txt_search_box,                                 :id => 'fieldValue'
+
   def login_with_valid_credentials(txt_username, txt_insti)
-    txt_login_element.value = txt_username
     select_insti_element.select(txt_insti)
-    txt_pwd_element.value = 'testing'
     btn_submit_element.click
+    wait_until(30, "HTC login page hasn't loaded"){htc_pwd_element.visible?}
+    htc_login_element.value = txt_username
+    htc_pwd_element.value = txt_username
+    sleep 3
+    lnk_login_element.click
+    wait_until(30, "Search page hasn't loaded"){txt_search_box_element.visible?}
   end
 
 end

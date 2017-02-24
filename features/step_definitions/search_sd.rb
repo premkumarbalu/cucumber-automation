@@ -4,7 +4,7 @@ Given(/^I launch the SCSB application$/) do
 end
 
 When(/^I login with valid credentails$/) do
-on(LoginPage).login_with_valid_credentials('superadmin', 'PUL')
+on(LoginPage).login_with_valid_credentials('superadmin', 'HTC')
 end
 
 Then(/^I should see search page with following elements:$/) do |table|
@@ -35,12 +35,12 @@ Then(/^I should see search page with following elements:$/) do |table|
 end
 
 When(/^I login with valid credential$/) do
-  on(LoginPage).login_with_valid_credentials('superadmin','PUL')
+  on(LoginPage).login_with_valid_credentials('superadmin','HTC')
   #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 
 When(/^I login with valid credentials$/) do
-  on(LoginPage).login_with_valid_credentials('superadmin','PUL')
+  on(LoginPage).login_with_valid_credentials('superadmin','HTC')
   #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 

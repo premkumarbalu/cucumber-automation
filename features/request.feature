@@ -159,7 +159,7 @@ Feature: Request
       And I click create
      Then I should see request details in request page
 
-  #NYPL
+
   @automation
   Scenario: As a librarian, I can create own institution NYPL to NYPL EDD request
     Given I launch the SCSB application
@@ -197,3 +197,91 @@ Feature: Request
       And I search RETRIVAL request
       And I click cancel button
      #Then I should see cancelled item barcode in available in search page
+
+  @automation
+  Scenario: As a librarian, I can create own institution PUL to PUL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter own institution PUL to PUL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+  @automation
+  Scenario: As a librarian, I can create cross institution PUL to CUL EDD request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution PUL to CUL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+
+  @automation
+  Scenario: As a librarian, I can create cross institution PUL to NYPL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution PUL to NYPL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+    #CUL
+  @automation
+  Scenario: As a librarian, I can create own institution CUL to CUL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution CUL to CUL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+
+  @automation
+  Scenario: As a librarian, I can create cross institution CUL to PUL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution CUL to PUL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+
+  @automation
+  Scenario: As a librarian, I can create cross institution CUL to NYPL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution CUL to NYPL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+
+  @automation
+  Scenario: As a librarian, I can create own institution NYPL to NYPL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution NYPL to NYPL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+
+  @automation
+  Scenario: As a librarian, I can create cross institution NYPL to PUL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution NYPL to PUL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
+
+
+  @automation
+  Scenario: As a librarian, I can create cross institution NYPL to CUL RECALL request
+    Given I launch the SCSB application
+    When I login with valid credentials
+    And I navigate to request page
+    And I enter cross institution NYPL to CUL mandaory information for RECALL request
+    And I click create
+    Then I should see request details in request page
