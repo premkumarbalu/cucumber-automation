@@ -5,6 +5,7 @@ class RequestPage
 
   #span            :lnk_searchrequest,                                      :xpath => "html/body/section/div/div/div/div/div/div/form/fieldset/div[1]/div[2]/div[1]/div[2]/a/span"
   link            :lnk_searchrequest,                                      :link =>"Search Requests"
+  link            :lnk_goback,                                             :link => "Go Back"
   button          :btn_search,                                             :id => 'searchRequestsButton'
   button          :btn_cancel,                                             :id => 'cancelRequestsButtonId'
   button          :create_button,                                          :id => 'createrequestsubmit'
@@ -41,6 +42,23 @@ class RequestPage
         data = data_for(:nypl_patron_information)
         populate_page_with data
     end
+  end
+
+  def get_retrival_barcode
+    lnk_searchrequest_element.click
+    sleep 2
+    request_status_element.select('RETRIEVAL ORDER PLACED')
+    btn_search_element.click
+    sleep 5
+    barcode =[]
+
+    i = 0
+    begin
+      barcode << text_field_element(:id=>"requestResults-#{i}").cell_elements[2].text rescue nil
+      i= i+1
+    end while i <=15
+    barcode = barcode.reject{|i| i.empty?}
+    return barcode.sample
   end
 
 end

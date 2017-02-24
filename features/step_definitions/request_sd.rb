@@ -14,12 +14,14 @@ end
 
 end
 
-And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory information for (RETRIVAL|EDD) request$/) do |txt_own, txt_insti, txt_crossInsti,txt_request_type|
-  @availbale_barcode = get_available_barcode(txt_insti)
+And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory information for (RETRIVAL|EDD|RECALL) request$/) do |txt_own, txt_insti, txt_crossInsti,txt_request_type|
 
+  if txt_request_type != "RECALL"
+  @availbale_barcode = get_available_barcode(txt_insti)
   on(SearchPage).tab_request_element.click
   on(RequestPage).txt_itembarcode_element.value = @availbale_barcode
   on(RequestPage).sele_requestinginsti_element.select(txt_crossInsti)
+  end
 
   case txt_request_type
     when 'RETRIVAL'
@@ -40,9 +42,16 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
         when 'NYPL'
           on(RequestPage).txt_patronbarcode_element.value ='23333097542730'
       end
+    when 'RECALL'
+      @availbale_barcode = on(RequestPage).get_retrival_barcode
+      on(RequestPage).lnk_goback_element.click
+      sleep 3
+      on(RequestPage).txt_itembarcode_element.value = @availbale_barcode
+      on(RequestPage).sele_requestinginsti_element.select(txt_crossInsti)
+      on(RequestPage).populate_data(txt_insti)
+      on(RequestPage).request_type_element.select('RECALL')
+      sleep 2
   end
-
-
 
   case txt_own
     when 'cross'
