@@ -84,6 +84,7 @@ class SearchPage
     btn_show_facts_element.click
     sleep 2
     click_facts('Out')
+    sleep 1
     click_facts('Private')
     sleep 2
     btn_search
@@ -113,6 +114,7 @@ class SearchPage
     end
 =end
     return barcode.sample
+    puts barcode
   end
 
   def login_driver_portal
