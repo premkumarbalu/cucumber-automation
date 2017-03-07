@@ -4,7 +4,8 @@ class LoginPage
 
   #page_url "http://tst-recap-direct.htcinc.com:9091"
   #page_url "http://uat-recap.htcinc.com:9091"
- page_url "http://192.168.55.198:9091"
+ page_url "https://tst-recap.htcinc.com/"
+
 
   div           :login_cont,                        :class => 'login-content'
   text_field    :txt_login,                         :id=>'networkloginid'
@@ -17,7 +18,6 @@ class LoginPage
   image         :logo_pul,                          :class => 'member-princeton-univ-logo'
   image         :logo_nypl,                         :class => 'member-ny-public-logo'
   link          :lnk_home,                          :xpath => 'html/body/div[1]/div/div/div/div[1]/div[1]/div'
-
   link          :lnk_facility,                      :xpath => 'html/body/div[2]/div/div/div/div[2]/ul/li[2]/a'
   link          :lnk_opertations,                   :xpath => 'html/body/div[2]/div/div/div/div[2]/ul/li[3]/a'
   link          :lnk_collections,                   :xpath => 'html/body/div[2]/div/div/div/div[2]/ul/li[4]/a'
@@ -26,13 +26,11 @@ class LoginPage
 
   paragraph     :txt_userNameError,                 :id => 'userNameError'
 
-
   #HTC User
   text_field     :htc_login,                       :id => 'username'
   text_field     :htc_pwd,                         :id => 'password'
   button         :lnk_login,                       :name => 'submit'
-
-  text_field       :txt_search_box,                                 :id => 'fieldValue'
+  text_field     :txt_search_box,                  :id => 'fieldValue'
 
   def login_with_valid_credentials(txt_username, txt_insti)
     select_insti_element.select(txt_insti)

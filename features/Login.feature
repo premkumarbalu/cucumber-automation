@@ -1,6 +1,6 @@
 Feature: Login
 
- @automation 
+ @manual
  Scenario: As a Recap user,I can view error message without enter username, password & Institution
    Given I launch the SCSB application
     When I click submit button
@@ -10,7 +10,7 @@ Feature: Login
 	 |Please select your institution |
 	 |Please specify a password.     |
 
-  @automation 
+  @manual
   Scenario: As a Recap user,I can view error message without select password & Institution
    Given I launch the SCSB application
     When I enter valid username
@@ -20,7 +20,7 @@ Feature: Login
 	 |Please select your institution |
 	 |Please specify a password.     |
 
-  @automation
+  @manual
  Scenario: As a Recap user,I can view error message without enter password
    Given I launch the SCSB application
     When I enter valid username
@@ -30,7 +30,7 @@ Feature: Login
 	 |messages                       |
 	 |Please specify a password.     |
 
-  @automation 
+  @manual
  Scenario: As a Recap user,I can view error message when I enter invalid credentials
    Given I launch the SCSB application
     When I enter invalid credentials
@@ -38,7 +38,7 @@ Feature: Login
      And I click submit button
 	  Then I should see the error message Invalid Credentials
 
-  @automation 
+  @manual
  Scenario: As a Recap user,I can login with valid credentials
    Given I launch the SCSB application
     When I enter valid credentials
@@ -46,7 +46,7 @@ Feature: Login
      And I click submit button
 	  Then I should navigate to search page
 
-  @automation 
+  @manual
  Scenario: As a Recap user,I can logout with successful login
    Given I launch the SCSB application
     When I enter valid credentials

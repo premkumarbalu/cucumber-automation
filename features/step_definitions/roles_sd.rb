@@ -17,17 +17,18 @@ And(/^I create new user with following "([^"]*)" for own institution only:$/) do
  end
 
 Then(/^I should see message user has been (Added Successfully)$/) do |txt_msg|
-  sleep 3
-  @current_page.text.include?("#{$networklogin}" +" "+ txt_msg).should be_true, "User roles not created successfully"
+  sleep 2
+  @current_page.text.upcase.include?(("#{$networklogin}" +" "+ txt_msg).upcase).should be_true, "User roles not created successfully"
   on(RolesPage).lnk_goback_element.click
+  sleep 2
   on(RolesPage).txt_searchnetwork_login_element.value = $networklogin
   on(RolesPage).btn_search_element.click
-  sleep 3
+  sleep 2
   @current_page.text.include?($networklogin).should be_true, "User roles not created successfully"
   on(RolesPage).img_delete_element.click
-  sleep 3
+  sleep 2
   on(RolesPage).btn_delete_element.click
-  sleep 3
+  sleep 2
   #@current_page.text.include?("#{$networklogin} + Deleted successfully").should be_true, "User id hasn't deleted successfully"
 end
 
@@ -42,9 +43,9 @@ When(/^I login with valid (Search and Request|Collections|ReCap) user credential
     when 'ReCap'
       on(RolesPage).create_recap_role
   end
-    on(SearchPage).lnk_logout_element.click
-    sleep 2
-    on(LoginPage).login_with_valid_credentials($networklogin, get_institution($networkinsti.to_i))
+   # on(SearchPage).lnk_logout_element.click
+   # sleep 2
+   # on(LoginPage).login_with_valid_credentials($networklogin, get_institution($networkinsti.to_i))
 
 end
 

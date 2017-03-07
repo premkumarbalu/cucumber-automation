@@ -74,7 +74,6 @@ And(/^I click create$/) do
 end
 
 Then(/^I should see request details in request page$/) do
-
     sleep 5
     on(RequestPage).lnk_searchrequest_element.click
     sleep 2
@@ -88,6 +87,7 @@ Then(/^I should see request details in request page$/) do
       on(RequestPage).request_status_element.select ('EXCEPTION')
       on(RequestPage).btn_search_element.click
       sleep 10
+      puts @availbale_barcode
       @current_page.text.include?(@availbale_barcode).should be_true, "Request hasn't created for barcode #{@availbale_barcode}"
   end
 end

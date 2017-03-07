@@ -16,7 +16,7 @@ Feature: User Management & Roles permissions
 	 |Search         |
 
 
- @automation
+ @manual
  Scenario: As a Search and Request User,I should have the following permissions
     Given I launch the SCSB application
      When I login with valid Search and Request user credentials
@@ -29,7 +29,7 @@ Feature: User Management & Roles permissions
      |search SCSB and export results                     |
 
 
- @automation
+ @manual
  Scenario: As a Collections User,I should have the following permissions
     Given I launch the SCSB application
      When I login with valid Collections user credentials
@@ -44,7 +44,7 @@ Feature: User Management & Roles permissions
      |search SCSB and export results                     |
 
 
- @automation
+ @manual
  Scenario: As a ReCAP User,I should have the following permissions
     Given I launch the SCSB application
      When I login with valid ReCap user credentials
@@ -59,7 +59,7 @@ Feature: User Management & Roles permissions
      |request items from any institution                 |
      |cancel any request                                 |
 
- @automation
+ @manual
  Scenario: As a super admin User, I should have the following permissions
     Given I launch the SCSB application
      When I login with valid superadmin user credentials
