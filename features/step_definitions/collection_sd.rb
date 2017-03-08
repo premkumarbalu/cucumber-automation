@@ -81,6 +81,7 @@ Then(/^I should see item detail page with following elements$/) do |table|
       when 'CGD Change Notes'
         on(CollectionPage).txt_cgdchangenotesfield_element.visible?.should be_true, "CGD notes field hasn't displayed"
       when 'Deaccession Type'
+        @current_page.wait_until(30, "Deaccession type drop down hasn't displayed" ){on(CollectionPage).txt_deaccessiontype_element.visible?}
         on(CollectionPage).txt_deaccessiontype_element.visible?.should be_true, "Deaccession type drop down hasn't displayed"
       when 'Delivery Location'
         on(CollectionPage).txt_deliverylocation_element.visible?.should be_true, "delivery location drop down hasn't displayed"
@@ -170,11 +171,14 @@ And(/^I select deaccession radio button$/) do
 end
 
 And(/^I select delivery location$/) do
+  sleep 3
   delivery_locations =  on(CollectionPage).txt_deliverylocation_element.text.gsub("\n",",").split(",")
+  sleep 3
   on(CollectionPage).txt_deliverylocation_element.select(delivery_locations.sample)
 end
 
 And(/^I enter deaccession notes$/) do
+  sleep 3
   on(CollectionPage).txt_deaccessionnotesfield_element.value = "Deaccession-Testing"
 end
 
