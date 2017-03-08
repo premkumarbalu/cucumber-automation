@@ -4,7 +4,7 @@ class LoginPage
 
   #page_url "http://tst-recap-direct.htcinc.com:9091"
   #page_url "http://uat-recap.htcinc.com:9091"
- page_url "https://tst-recap.htcinc.com/"
+  page_url "https://tst-recap.htcinc.com/"
 
 
   div           :login_cont,                        :class => 'login-content'
