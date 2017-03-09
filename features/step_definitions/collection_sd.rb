@@ -88,7 +88,11 @@ Then(/^I should see item detail page with following elements$/) do |table|
       when 'Deaccession Notes'
         on(CollectionPage).txt_deaccessionnotesfield_element.visible?.should be_true, "Deaccession note field hasn't displayed"
       when 'Submit button'
-        on(CollectionPage).btn_collectionupdatebutton_element.visible?.should be_true, "Submit button hasn't displayed"
+       begin
+        on(CollectionPage).btn_cgd_collectionupdatebutton_element.visible?.should be_true, "Submit button hasn't displayed"
+       rescue
+         on(CollectionPage).btn_deaccession_collectionupdatebutton_element.visible?.should be_true, "Submit button hasn't displayed"
+       end
     end
   end
 end
@@ -137,7 +141,8 @@ And(/^I enter CGD change notes$/) do
 end
 
 And(/^I click submit$/) do
-  on(CollectionPage).btn_collectionupdatebutton_element.click
+
+  on(CollectionPage).btn_cgd_collectionupdatebutton_element.click rescue on(CollectionPage).btn_deaccession_collectionupdatebutton_element.click
 end
 
 Then(/^I should see (The CGD has been successfully updated)$/) do |txt_msg|
