@@ -170,7 +170,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "Barcode" as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "33433013571991" in search box
+     And I enter "33433011790304" in search box
      And I select "Barcode" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -265,13 +265,13 @@ Feature: Search page
     When I click author sorting arrow
     Then I should see author sorted based on the alphabets
 
- @automation @defect-RECAP-431
+ @automation6
  Scenario: As a librarian , I can uncheck the Select or Unselect All Facets Option
    Given I launch the SCSB application
     When I login with valid credential
     And  I uncheck the Select or Unselect All Facets Option
      And I click search button
-    Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
+    Then I should see error message At least one Bib Facet and one Item Facet must be checked to get results.
 
 #when Select or Unselect All Facets Option is checked then to verify whether results are displayed or not
  @automation
@@ -361,7 +361,7 @@ Feature: Search page
     When I login with valid credential
      And I uncheck all bib facets
      And I click search button
-   Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
+   Then I should see error message At least one Bib Facet and one Item Facet must be checked to get results.
 
  @automation @defect-RECAP-431
  Scenario:As a librarian, If I uncheck all Item facets then I should see error message
@@ -369,7 +369,7 @@ Feature: Search page
     When I login with valid credential
      And I uncheck all Item facets
      And I click search button
-   Then I should see error message At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.
+   Then I should see error message At least one Bib Facet and one Item Facet must be checked to get results.
 
  @automation
  Scenario:As a librarian, If I click on hide facets icon then Bib and Item Facets should not display

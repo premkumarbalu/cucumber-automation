@@ -158,10 +158,10 @@ When(/^I uncheck the Select or Unselect All Facets Option$/) do
   on(SearchPage).click_facts("Select / Unselect All Facets")
 end
 
-Then(/^I should see error message (At least one Bib Facet Box and one Item Facet Box needs to be checked to get results.)$/) do |txt_error_msg|
-  sleep 5
+Then(/^I should see error message (At least one Bib Facet and one Item Facet must be checked to get results.)$/) do |txt_error_msg|
+  sleep 2
   msg = on(SearchPage).txt_alert_alert_info_element.text
-  msg.upcase.eql?(txt_error_msg.upcase).should be_true, "At least one Search Facet Box needs to be checked to get results"
+  msg.upcase.include?(txt_error_msg.upcase).should be_true, "At least one Search Facet Box needs to be checked to get results"
 end
 
 

@@ -86,6 +86,8 @@ class SearchPage
     click_facts('Out')
     sleep 1
     click_facts('Private')
+    click_facts('Serials')
+    click_facts('Others')
     sleep 2
     btn_search
     wait_until(30, ""){table_searchResultsDiv_element.visible?}
@@ -113,7 +115,19 @@ class SearchPage
       end
     end
 =end
+
+    if barcode.empty?
+      j=0
+      begin
+      image_element(:id=>"showItemsIcon-#{j}").click
+      debugger
+      barcode = span_element(:id=>"searchItemResultsDataBarS-0-#{j}").text rescue nil
+        j=j+1
+      end while j <= 15
+      barcode = barcode.reject{|i| i.empty?}
+    end
     return barcode.sample
+    debugger
     puts barcode
   end
 

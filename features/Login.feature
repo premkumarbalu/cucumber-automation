@@ -5,30 +5,9 @@ Feature: Login
    Given I launch the SCSB application
     When I click submit button
     Then I should see following error messages:
-	 |messages                       |
-	 |Please specify a username.     |
-	 |Please select your institution |
-	 |Please specify a password.     |
+	 |messages              |
+	 |This Field is required|
 
-  @manual
-  Scenario: As a Recap user,I can view error message without select password & Institution
-   Given I launch the SCSB application
-    When I enter valid username
-     And I click submit button
-	  Then I should see following error messages:
-	 |messages                       |
-	 |Please select your institution |
-	 |Please specify a password.     |
-
-  @manual
- Scenario: As a Recap user,I can view error message without enter password
-   Given I launch the SCSB application
-    When I enter valid username
-     And I select Institution
-     And I click submit button
-	Then I should see following error messages:
-	 |messages                       |
-	 |Please specify a password.     |
 
   @manual
  Scenario: As a Recap user,I can view error message when I enter invalid credentials
@@ -84,7 +63,7 @@ Feature: Login
 
 	Examples:
      |links                      |webpage                                             |
-     #|AboutRecap                 |https://recap.princeton.edu/                        |
+     #|AboutRecap                 |https://recap.princeton.edu/                       |
      |Facility & Storage         |https://recap.princeton.edu/facility-storage        |
      |Operations & Statistics    |https://recap.princeton.edu/operations-statistics   |
      |Collections & Services     |https://recap.princeton.edu/collections-services    |
