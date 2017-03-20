@@ -179,7 +179,7 @@ And(/^I select delivery location$/) do
   sleep 3
   delivery_locations =  on(CollectionPage).txt_deliverylocation_element.text.gsub("\n",",").split(",")
   sleep 3
-  on(CollectionPage).txt_deliverylocation_element.select(delivery_locations.sample)
+  on(CollectionPage).txt_deliverylocation_element.select(delivery_locations.sample) rescue nil
 end
 
 And(/^I enter deaccession notes$/) do

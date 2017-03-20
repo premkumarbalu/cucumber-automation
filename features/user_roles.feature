@@ -16,60 +16,30 @@ Feature: User Management & Roles permissions
 	 |Search         |
 
 
- @manual
- Scenario: As a Search and Request User,I should have the following permissions
-    Given I launch the SCSB application
-     When I login with valid Search and Request user credentials
-     Then I should see the following permissions:
-     |permissions                                        |
-     |requests-owninstitution-Shared Open or Private     |
-     |requests-regardless of Inst-shared or open         |
-     |cancel own requests                                |
-     |view/print reports                                 |
-     |search SCSB and export results                     |
+ @automation
+ Scenario: As a admin user i can create "Search and Request" User
+   Given I launch the SCSB application
+    When I login with valid credentails
+    Then I can create Search and Request user credentials
 
 
- @manual
- Scenario: As a Collections User,I should have the following permissions
-    Given I launch the SCSB application
-     When I login with valid Collections user credentials
-     Then I should see the following permissions:
-     |permissions                                        |
-     |write/edit CGD for own institution                 |
-     |deaccession records for own institution            |
-     |requests - own institution -Shared Open or Private |
-     |requests - regardless of Inst - shared or open     |
-     |cancel_own_requests                                |
-     |view/print reports                                 |
-     |search SCSB and export results                     |
+ @automation
+ Scenario: As a admin user i can create "Collections" User
+   Given I launch the SCSB application
+    When I login with valid credentails
+    Then I can create Collections user credentials
 
 
- @manual
- Scenario: As a ReCAP User,I should have the following permissions
-    Given I launch the SCSB application
-     When I login with valid ReCap user credentials
-     Then I should see the following permissions:
+ @automation
+ Scenario: As a admin user i can create "ReCAP" User
+   Given I launch the SCSB application
+    When I login with valid credentails
+    Then I can create ReCAP user credentials
 
-     |permissions                                        |
-     |requests - own institution -Shared,Open or Private |
-     |requests - regardless of Inst - shared or open     |
-     |view/print reports                                 |
-     |search SCSB and export results                     |
-     |Restriction to view barcode number in SCSB search  |
-     |request items from any institution                 |
-     |cancel any request                                 |
+ @automation
+ Scenario: As a admin user i can create "admin" User
+   Given I launch the SCSB application
+    When I login with valid credentails
+    Then I can create admin user credentials
 
- @manual
- Scenario: As a super admin User, I should have the following permissions
-    Given I launch the SCSB application
-     When I login with valid superadmin user credentials
-     Then I should see the following permissions:
-     |permissions                                              |
-     |requests - regardless of Inst - shared,open and Private  |
-     |view/print reports                                       |
-     |search SCSB and export results                           |
-     |request items from any institution                       |
-     |cancel any request                                       |
-     |write/edit CGD for own institution                       |
-     |deaccession records for own institution                  |
 

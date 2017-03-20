@@ -32,9 +32,9 @@ Then(/^I should see message user has been (Added Successfully)$/) do |txt_msg|
   #@current_page.text.include?("#{$networklogin} + Deleted successfully").should be_true, "User id hasn't deleted successfully"
 end
 
-When(/^I login with valid (Search and Request|Collections|ReCap) user credentials$/) do |txt_roles|
+When(/^I can create (Search and Request|Collections|ReCAP|admin) user credentials$/) do |txt_roles|
 
-  step "I login with valid credentials"
+ # step "I login with valid credentials"
   case txt_roles
     when "Search and Request"
       on(RolesPage).create_searchrequest_role
@@ -42,6 +42,8 @@ When(/^I login with valid (Search and Request|Collections|ReCap) user credential
       on(RolesPage).create_collection_role
     when 'ReCap'
       on(RolesPage).create_recap_role
+    when 'admin'
+    on(RolesPage).create_admin_role
   end
    # on(SearchPage).lnk_logout_element.click
    # sleep 2
