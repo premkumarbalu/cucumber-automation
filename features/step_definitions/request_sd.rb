@@ -14,7 +14,7 @@ end
 
 end
 
-And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory information for (RETRIVAL|EDD|RECALL) request$/) do |txt_own, txt_insti, txt_crossInsti,txt_request_type|
+And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory information for (RETRIEVAL|EDD|RECALL) request$/) do |txt_own, txt_insti, txt_crossInsti,txt_request_type|
 
   if txt_request_type != "RECALL"
   @availbale_barcode = get_available_barcode(txt_insti)
@@ -24,7 +24,7 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
   end
 
   case txt_request_type
-    when 'RETRIVAL'
+    when 'RETRIEVAL'
           on(RequestPage).populate_data(txt_insti)
     when 'EDD'
       on(RequestPage).request_type_element.select('EDD')

@@ -265,7 +265,7 @@ Feature: Search page
     When I click author sorting arrow
     Then I should see author sorted based on the alphabets
 
- @automation6
+ @automation
  Scenario: As a librarian , I can uncheck the Select or Unselect All Facets Option
    Given I launch the SCSB application
     When I login with valid credential
@@ -319,7 +319,7 @@ Feature: Search page
    |Colloction group checkboxs    |
    |material type checkboxs       |
 
- @automation1
+ @automation
  Scenario: As a librarian , I can see search results when I click on next button
    Given I launch the SCSB application
     When I login with valid credential
