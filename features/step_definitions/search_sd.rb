@@ -4,7 +4,18 @@ Given(/^I launch the SCSB application$/) do
 end
 
 When(/^I login with valid credentails$/) do
-on(LoginPage).login_with_valid_credentials('superadmin', 'HTC')
+on(LoginPage).login_with_valid_credentials('superadmin','superadmin', 'HTC')
+end
+
+
+When(/^I login with valid credential$/) do
+  on(LoginPage).login_with_valid_credentials('superadmin','superadmin','HTC')
+  #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
+end
+
+When(/^I login with valid credentials$/) do
+  on(LoginPage).login_with_valid_credentials('superadmin','superadmin','HTC')
+  #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 
 Then(/^I should see search page with following elements:$/) do |table|
@@ -34,15 +45,6 @@ Then(/^I should see search page with following elements:$/) do |table|
   end
 end
 
-When(/^I login with valid credential$/) do
-  on(LoginPage).login_with_valid_credentials('superadmin','HTC')
-  #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
-end
-
-When(/^I login with valid credentials$/) do
-  on(LoginPage).login_with_valid_credentials('superadmin','HTC')
-  #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
-end
 
 Then(/^I should see the following checkbox filters are checked by defaultly:$/) do |table|
   # table is a Cucumber::Ast::Table

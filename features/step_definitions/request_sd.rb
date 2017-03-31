@@ -26,12 +26,14 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
   case txt_request_type
     when 'RETRIEVAL'
           on(RequestPage).populate_data(txt_insti)
+          delivery_location
     when 'EDD'
       on(RequestPage).request_type_element.select('EDD')
       sleep 3
       on(RequestPage).txt_start_page_element.value = '1'
       on(RequestPage).txt_end_page_element.value = '10'
       on(RequestPage).txt_title_element.value = 'Testing'
+      on(RequestPage).txt_emailid_element.value = "test@gmail.com"
 
 
       case txt_crossInsti
@@ -49,6 +51,7 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
       on(RequestPage).txt_itembarcode_element.value = @availbale_barcode
       on(RequestPage).sele_requestinginsti_element.select(txt_crossInsti)
       on(RequestPage).populate_data(txt_insti)
+      delivery_location
       on(RequestPage).request_type_element.select('RECALL')
       sleep 2
   end
@@ -64,6 +67,14 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
           on(RequestPage).txt_patronbarcode_element.value ='23333097542730'
       end
   end
+end
+
+def delivery_location
+  t1 = on(RequestPage).delivery_location_element.text
+  t2 = t1.gsub("\n", ",")
+  t3 = t2.split(",")
+  dl =t3.sample
+  on(RequestPage).delivery_location_element.select(dl)
 end
 
 And(/^I click create$/) do

@@ -5,6 +5,7 @@ class LoginPage
   #page_url "http://tst-recap-direct.htcinc.com:9091"
   #page_url "http://uat-recap.htcinc.com:9091"
   page_url "https://tst-recap.htcinc.com/"
+  #page_url "https://uat-recap.htcinc.com/"
 
 
   div           :login_cont,                        :class => 'login-content'
@@ -32,12 +33,12 @@ class LoginPage
   button         :lnk_login,                       :name => 'submit'
   text_field     :txt_search_box,                  :id => 'fieldValue'
 
-  def login_with_valid_credentials(txt_username, txt_insti)
+  def login_with_valid_credentials(txt_username,txt_pwd, txt_insti)
     select_insti_element.select(txt_insti)
     btn_submit_element.click
     wait_until(30, "HTC login page hasn't loaded"){htc_pwd_element.visible?}
     htc_login_element.value = txt_username
-    htc_pwd_element.value = txt_username
+    htc_pwd_element.value = txt_pwd
     sleep 3
     lnk_login_element.click
     wait_until(30, "Search page hasn't loaded"){txt_search_box_element.visible?}
