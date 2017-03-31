@@ -9,18 +9,18 @@ pul_patron_information:
     txt_emailid: "test@gmail.com"
     #sele_requestinginsti: "PUL"
     txt_notes: "test@gmail.com"
-    delivery_location: "PU Standard"
+    #delivery_location: "CU Standard"
 
 cul_patron_information:
     txt_patronbarcode: ~(['RECAPTST02','RECAPTST03'].sample)
     txt_emailid: "test@gmail.com"
     #sele_requestinginsti: "PUL"
     txt_notes: "test@gmail.com"
-    delivery_location: "CU Standard"
+    #delivery_location: "CU Standard"
 
 nypl_patron_information:
     txt_patronbarcode: ~(['23333097542730'].sample)
     txt_emailid: "test@gmail.com"
     #sele_requestinginsti: "PUL"
     txt_notes: "test@gmail.com"
-    delivery_location: "NYPL Standard"
+    #delivery_location: "NYPL Standard"
