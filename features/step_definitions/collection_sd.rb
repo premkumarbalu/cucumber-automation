@@ -162,7 +162,7 @@ When(/^I navigate to item detail page$/) do
 end
 
 Then(/^I should see error message "(.*?)"$/) do |txt_err_msg|
-  @current_page.text.upcase.include?(txt_err_msg.upcase).should be_true, "CGD Note error message hasn't displayed"
+  @current_page.text.upcase.include?(txt_err_msg.upcase).should be_true, "Notes error message hasn't displayed"
 end
 
 Then(/^I should see message (Please enter CGD Change Notes)$/) do |txt_err_msg|
