@@ -49,6 +49,7 @@ gem 'net-ssh-gateway', '1.1.0'
 gem 'jdbc-mysql', '5.1.38'
 gem  'dbi'
 gem  'dbd-jdbc'
+gem 'cuke_sniffer'
 
 #gem 'activerecord-jdbcpostgresql-adapter', '~> 1.3', '>= 1.3.20'
 

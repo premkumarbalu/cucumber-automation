@@ -152,7 +152,7 @@ And(/^I click cancel button$/) do
   @current_page.button_element(:id => 'cancelButton-1').click
   #@current_page.wait_until(30, "Close button hasn't displayed"){@current_page.button_element(:class => 'close')}
   sleep 10
-  @current_page.navigate_to "http://tst-recap.htcinc.com:9091/search"
+  @current_page.navigate_to "http://tst-recap.htcinc.com/search"
   sleep 5
   on(SearchPage).txt_search_box_element.value = @barcode
   step "I click search button"
