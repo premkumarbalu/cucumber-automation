@@ -136,7 +136,7 @@ Feature: Collection
 	 And I select deaccession radio button
     Then I should see list of delivery location based on the customer code
 	
- @automation7
+ @automation
  Scenario: As a librarian, I cann't deaccession the barcode without delivery location
    Given I launch the SCSB application
     When I login with valid credentials
