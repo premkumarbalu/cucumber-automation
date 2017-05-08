@@ -4,23 +4,23 @@ Given(/^I launch the SCSB application$/) do
 end
 
 When(/^I login with valid credentails$/) do
-on(LoginPage).login_with_valid_credentials('superadmin','superadmin', 'HTC')
+on(LoginPage).login_with_valid_credentials('mkarthik3i','Testing1234', 'HTC')
 end
 
 
 When(/^I login with valid credential$/) do
-  on(LoginPage).login_with_valid_credentials('superadmin','superadmin','HTC')
+  on(LoginPage).login_with_valid_credentials('mkarthik3i','Testing1234','HTC')
   #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 
 When(/^I login with valid credentials$/) do
-  on(LoginPage).login_with_valid_credentials('superadmin','superadmin','HTC')
+  on(LoginPage).login_with_valid_credentials('mkarthik3i','Testing1234','HTC')
   #@current_page.wait_until('30',"Search page hasn't dispalyed"){on(SearchPage).txt_search_box_element.visible?}
 end
 
 Then(/^I should see search page with following elements:$/) do |table|
   on(SearchPage).btn_show_facts_element.click
-  sleep 2
+  sleep 3
   table.rows.each do |element|
     case element.first
       when 'search box'
@@ -39,8 +39,8 @@ Then(/^I should see search page with following elements:$/) do |table|
         on(SearchPage).btn_search_element.visible?.should be_true, "Search button hasn't displayed on search page"
       when 'Use Restriction'
         on(SearchPage).btn_use_restriction_element.visible?.should be_true, "Clear button hasn't displayed on search page"
-      when 'New Search button'
-        on(SearchPage).btn_newSearch_element.visible?.should be_true, "New Search button hasn't displayed on search page"
+      when 'Reset Search button '
+        on(SearchPage).btn_resetSearch_element.visible?.should be_true, "New Search button hasn't displayed on search page"
     end
   end
 end
@@ -98,6 +98,7 @@ When(/^I search with invalid keyword in search box$/) do
 end
 
 Then(/^I should see error message as "(.*?)"$/) do |txt_invalid_msg|
+  @current_page.wait_until(30, "SearchResult hasn't displayed"){on(SearchPage).txt_searchResultsMsg_element.visible?}
   txt_value = on(SearchPage).txt_searchResultsMsg_element.text
   txt_invalid_msg.upcase.eql?(txt_value.upcase).should be_true, "Search result message hasn't displayed"
 end
@@ -149,7 +150,6 @@ When(/^I select each institution records count$/) do
 
 end
 
-
 Then(/^I should match with total count of bib records$/) do
   @value.to_i.eql?(@values).should be_true, "Bib total records count is mismatch"
 end
@@ -178,9 +178,11 @@ end
 
 
 #To verify reset with New Search button
-When(/^I click the New Search button$/) do
+When(/^I click the reset Search button$/) do
+  @current_page.wait_until(30,"Search button hasn't displayed"){on(SearchPage).btn_search_element.visible?}
   on(SearchPage).btn_search_element.click
-  on(SearchPage).btn_newSearch_element.click
+  # @current_page.wait_until(30,"Reset Search button hasn't displayed"){on(SearchPage).btn_resetSearch_element.visible?}
+  #on(SearchPage).btn_resetSearch_element.click
 end
 
 Then(/^I should be able to see Reset Search Page$/) do
@@ -267,16 +269,19 @@ When(/^I select option "(.*?)" in show checkbox$/) do |option_Value|
 end
 
 Then(/^I should see the 25 search results$/) do
+  @current_page.wait_until(30, "25records haven't displayed"){on(SearchPage).tbl_searchResultsDataPlus24_element.visible?}
   on(SearchPage).tbl_searchResultsDataPlus24_element.visible?.should be_true,"25 search results not there in application"
 end
 
 
 Then(/^I should see the 50 search results$/) do
+  @current_page.wait_until(30, "50records haven't displayed"){on(SearchPage).tbl_searchResultsDataPlus49_element.visible?}
   on(SearchPage).tbl_searchResultsDataPlus49_element.visible?.should be_true,"50 search results not there in application"
 end
 
 
 Then(/^I should see the 100 search results$/) do
+  @current_page.wait_until(30, "100records haven't displayed"){on(SearchPage).tbl_searchResultsDataPlus99_element.visible?}
   on(SearchPage).tbl_searchResultsDataPlus99_element.visible?.should be_true,"100 search results not there in application"
 end
 
@@ -354,4 +359,17 @@ Then(/^search text in the search box should be cleared$/) do
   on(SearchPage).txt_search_box_element.value = ""
 end
 
+=begin
+require 'rubyvm/debug_inspector'
 
+def breakpoint
+  RubyVM::DebugInspector.open{|inspector|
+    $inspector = inspector
+    inspector.backtrace_locations.each_with_index{|location, i|
+      b = inspector.frame_binding(i) # binding is nil if it is for when C's context
+      vars = b ? b.eval('local_variables') : []
+      puts [i, location.to_s, vars, b, inspector.frame_class(i)].inspect
+    }
+  }
+end
+=end

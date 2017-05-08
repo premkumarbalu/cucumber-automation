@@ -1,9 +1,11 @@
 
 And(/^I navigate to request page$/) do
-on(SearchPage).tab_request_element.click
+  @current_page.wait_until(30, "Request tab hasn't displayed"){on(SearchPage).tab_request_element.visible?}
+  on(SearchPage).tab_request_element.click
 end
 
 And(/^I click create button$/) do
+  @current_page.wait_until(30, "Create button hasn't displayed"){on(RequestPage).create_button_element.visible?}
   on(RequestPage).create_button_element.click
 end
 
@@ -18,7 +20,9 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
 
   if txt_request_type != "RECALL"
   @availbale_barcode = get_available_barcode(txt_insti)
+  @current_page.wait_until(30, "Request tab hasn't displayed"){on(SearchPage).tab_request_element.visible?}
   on(SearchPage).tab_request_element.click
+  @current_page.wait_until(30, "Barcode field hasn't displayed"){on(RequestPage).txt_itembarcode_element.visible?}
   on(RequestPage).txt_itembarcode_element.value = @availbale_barcode
   on(RequestPage).sele_requestinginsti_element.select(txt_crossInsti)
   end
@@ -26,7 +30,9 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
   case txt_request_type
     when 'RETRIEVAL'
           on(RequestPage).populate_data(txt_insti)
+          sleep 5
           delivery_location
+          sleep 2
     when 'EDD'
       on(RequestPage).request_type_element.select('EDD')
       sleep 3
@@ -51,7 +57,9 @@ And(/^I enter (own|cross) institution (PUL|CUL|NYPL) to (PUL|CUL|NYPL) mandaory 
       on(RequestPage).txt_itembarcode_element.value = @availbale_barcode
       on(RequestPage).sele_requestinginsti_element.select(txt_crossInsti)
       on(RequestPage).populate_data(txt_insti)
+      sleep 5
       delivery_location
+      sleep 2
       on(RequestPage).request_type_element.select('RECALL')
       sleep 2
   end
@@ -74,14 +82,15 @@ def delivery_location
   t2 = t1.gsub("\n", ",")
   t3 = t2.split(",")
   dl =t3.sample
+  sleep 2
   on(RequestPage).delivery_location_element.select(dl)
+  sleep 2
 end
 
 And(/^I click create$/) do
   on(RequestPage).create_button_element.click
-  @current_page.wait_until(30, "Create another window hasn't displayed"){on(RequestPage).create_another_request_element.visible?}
-  sleep 5
-  on(RequestPage).create_another_request_element.click
+  #@current_page.wait_until(30, "Create another window hasn't displayed"){on(RequestPage).create_another_request_element.visible?}
+  #on(RequestPage).create_another_request_element.click
 end
 
 Then(/^I should see request details in request page$/) do
@@ -135,6 +144,7 @@ def get_available_barcode(txt_institution)
       sleep 2
   end
   return on(SearchPage).get_valid_barcode
+  @current_page.wait_until(30, "Request tab hasn't displayed"){on(SearchPage).tab_request_element.visible?}
   on(SearchPage).tab_request_element.click
 end
 

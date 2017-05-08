@@ -16,7 +16,7 @@ class RequestPage
   text_field      :txt_notes,                                             :id => 'requestNotesId'
   select          :delivery_location,                                     :id => 'deliveryLocationId'
   button          :create_another_request,                                :id => 'anotherRequestButtonId'
-  text_field      :itembarcode,                                          :id => 'itemBarcode'
+  text_field      :itembarcode,                                           :id => 'itemBarcode'
   select          :request_status,                                        :id => 'requestStatus'
 
   select          :request_type,                                          :id => 'requestTypeId'
@@ -45,6 +45,7 @@ class RequestPage
   end
 
   def get_retrival_barcode
+    wait_until(30, "Search link hasn't dispalyed"){lnk_searchrequest_element.visible?}
     lnk_searchrequest_element.click
     sleep 2
     request_status_element.select('RETRIEVAL ORDER PLACED')

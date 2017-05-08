@@ -5,6 +5,7 @@ require 'require_all'
 require 'logger'
 require 'selenium-webdriver'
 require 'ruby-debug'
+gem 'pry', '~> 0.10.4'
 #require_all 'lib'
 #require 'cucumber/rails'
 require 'rspec'
@@ -14,6 +15,8 @@ require 'watir-webdriver'
 require 'headless'
 require 'active_record'
 require 'rubygems'
+require 'pry'
+require 'pry-debugger-jruby'
 ##require '../lib/jarfiles/db2driver-9.5.jar'
 
 #require 'data_magic'
@@ -37,4 +40,4 @@ require_all 'lib'
 
 World(PageObject::PageFactory)
 PageObject.default_page_wait = 90
-PageObject.default_element_wait = 10
+PageObject.default_element_wait = 20

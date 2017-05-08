@@ -1,6 +1,8 @@
 Given(/^I select Collection tab on the page$/) do
   @barcode = on(SearchPage).get_valid_barcode
+  sleep 2
   on(SearchPage).tab_collection_element.click
+  sleep 2
 end
 
 Then(/^I should see collection page with following elements:$/) do |table|
@@ -18,6 +20,7 @@ Then(/^I should see collection page with following elements:$/) do |table|
 end
 
 Then(/^I should see collection UI page$/) do
+  @current_page.wait_until(30,"Search box hasn't displayed on collection page"){on(CollectionPage).txt_search_box_element.visible?}
   on(CollectionPage).txt_search_box_element.visible?.should be_true, "Search box hasn't displayed on collection page"
 end
 
@@ -26,7 +29,9 @@ When(/^I enter valid Barcode in collection search box$/) do
 end
 
 And(/^I click Display Records$/)do
+  @current_page.wait_until(30,"Display button hasn't displayed"){on(CollectionPage).btn_displayrecords_element.visible?}
 on(CollectionPage).btn_displayrecords_element.click
+  sleep 3
 end
 
 Then(/^I should see search results in collection UI page$/) do
@@ -41,11 +46,12 @@ When(/^I enter invalid (1234566789) barcode in collection search box$/) do |txt_
 end
 
 Then(/^I should see message "(.*?)"$/) do |txt_msg|
+  sleep 3
+  @current_page.wait_until(30, "search box hasn't displayed"){on(CollectionPage).txt_search_box_element.visible?}
   @current_page.text.include?(txt_msg+" - "+ on(CollectionPage).txt_search_box_element.value).should be_true, "BarCode not found message hasn't displayed"
 end
 
 Then(/^I should see search results with following elements:$/) do |table|
-
   table.rows.each do |elements|
     case elements.first
       when 'Barcode'
@@ -141,7 +147,6 @@ And(/^I enter CGD change notes$/) do
 end
 
 And(/^I click submit$/) do
-
   on(CollectionPage).btn_cgd_collectionupdatebutton_element.click rescue on(CollectionPage).btn_deaccession_collectionupdatebutton_element.click
 end
 
@@ -162,6 +167,7 @@ When(/^I navigate to item detail page$/) do
 end
 
 Then(/^I should see error message "(.*?)"$/) do |txt_err_msg|
+  sleep 3
   @current_page.text.upcase.include?(txt_err_msg.upcase).should be_true, "Notes error message hasn't displayed"
 end
 
@@ -207,6 +213,7 @@ end
 
 When(/^I search with same barcode in collection UI$/) do
   #on(SearchPage).switch_browser_title('Search Records')
+  @current_page.wait_until(30,"Close button hasn't displayed"){on(CollectionPage).btn_close_element.visible?}
   on(CollectionPage).btn_close_element.click
   sleep 2
   step 'I enter valid Barcode in collection search box'
