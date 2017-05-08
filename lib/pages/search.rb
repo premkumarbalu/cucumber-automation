@@ -17,8 +17,8 @@ class SearchPage
   select_list      :drdown_fieldName,                               :id => 'fieldName'
   button           :btn_search,                                     :id => 'search'
   button           :btn_use_restriction,                            :xpath => 'html/body/section/div/div/div/div/div/form/fieldset/div/div/div/div[2]/div[3]/div[2]/div[3]'
-  button           :btn_newSearch,                                  :id => 'newSearch'
-  button           :btn_nextbutton,                                 :id => "nextBottom"
+  button           :btn_resetSearch,                                  :id => 'resetSearch'
+  button           :btn_nextbutton,                                 :xpath => "//a[contains(.,'Next')]"
   button           :btn_lastBottom,                                 :id => 'lastBottom'
   div              :table_searchResultsDiv,                         :id => 'searchResultsDiv'
   span             :image_showFacetsIcon,                           :id => 'showFacets'
@@ -64,15 +64,15 @@ class SearchPage
   div              :facts_window,                                   :id => 'search-filter'
 
   #-------------------------------------------------------------------------------------
-  text_field       :password,                             :xpath => "//input[@type='password']"
-  button           :continue,                             :class => 'box-submit'
-  link             :lnk_forgot,                           :class => 'small-text'
-  text_field       :int_forgot_email,                     :class => 'form-control'
-  div              :txt_alert_msg,                        :class => 'alert-success'
-  link             :lnk_logout,                           :class => 'logout'
+  text_field     :password,                                :xpath => "//input[@type='password']"
+  button         :continue,                                :class => 'box-submit'
+  link           :lnk_forgot,                              :class => 'small-text'
+  text_field     :int_forgot_email,                        :class => 'form-control'
+  div            :txt_alert_msg,                           :class => 'alert-success'
+  link           :lnk_logout,                              :class => 'logout'
 
   link          :tab_search,                               :class => 'tab-search'
-  link          :tab_collection,                           :class =>'tab-collection'
+  link          :tab_collection,                           :class => 'tab-collection'
   link          :tab_request,                              :class => 'tab-request'
   link          :tab_reports,                              :class => 'tab-reports'
   link          :tab_role,                                 :class => 'tab-role'
@@ -86,11 +86,14 @@ class SearchPage
     click_facts('Out')
     sleep 1
     click_facts('Private')
+    sleep 2
     click_facts('Serials')
+    sleep 2
     click_facts('Others')
     sleep 2
     btn_search
-    wait_until(30, ""){table_searchResultsDiv_element.visible?}
+    sleep 5
+    wait_until(60, ""){table_searchResultsDiv_element.visible?}
      barcode = []
 
     i = 0
@@ -117,17 +120,19 @@ class SearchPage
 =end
 
     if barcode.empty?
+
       j=0
       begin
-      image_element(:id=>"showItemsIcon-#{j}").click
-      debugger
-      barcode = span_element(:id=>"searchItemResultsDataBarS-0-#{j}").text rescue nil
+        sleep 2
+      image_element(:id=>"showItemsIcon-#{j}").click rescue nil
+        sleep 2
+      barcode << span_element(:id=>"searchItemResultsDataBarS-0-#{j}").text rescue nil
         j=j+1
       end while j <= 15
       barcode = barcode.reject{|i| i.empty?}
     end
+
     return barcode.sample
-    debugger
     puts barcode
   end
 

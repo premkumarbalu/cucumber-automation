@@ -22,7 +22,7 @@ Feature: Search page
    |All fields dropdown           |
    |Search button                 |
    |Use Restriction               |
-   |New Search button             |
+   |Reset Search button           |
 
  @manual
  Scenario: As a librarian, I can see checkbox filters are checked by defaultly in search page
@@ -170,7 +170,7 @@ Feature: Search page
  Scenario: As a librarian, I can search with "Barcode" as a keyword in the search box
    Given I launch the SCSB application
     When I login with valid credential
-     And I enter "33433011790304" in search box
+     And I enter "33433013074434" in search box
      And I select "Barcode" in All fields dropdown box
      And I click search button
     Then I should see the search results
@@ -222,7 +222,7 @@ Feature: Search page
     When I select "Export Selected Records"
     Then The selected records are exported as a CSV file in the same format as the grid
 
- @automation 
+ @automation
  Scenario: As a librarian, I search with invalid keyword or junk keyword
    Given I launch the SCSB application
     When I login with valid credential
@@ -287,7 +287,7 @@ Feature: Search page
  Scenario: As a librarian , I can reset the search result
    Given I launch the SCSB application
     When I login with valid credential
-    And  I click the New Search button
+    And  I click the reset Search button
     Then I should be able to see Reset Search Page
 
 

@@ -38,9 +38,9 @@ Feature: Login
   @automation
  Scenario: As a user,I can view Recap tweet timeline in login page
    Given I launch the SCSB application
-	  Then I should see Recap tweet timeline in login page
+    Then I should see Recap tweet timeline in login page
 
- @automation 
+ @automation
  Scenario Outline: As a user,I can view Institutions symbols on login page and navigate to corresponding Institution webpages
    Given I launch the SCSB application
 	Then I should navigate login page

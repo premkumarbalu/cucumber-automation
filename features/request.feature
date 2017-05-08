@@ -208,7 +208,7 @@ Feature: Request
     Then I should see request details in request page
 
   @automation
-  Scenario: As a librarian, I can create cross institution PUL to CUL EDD request
+  Scenario: As a librarian, I can create cross institution PUL to CUL RECALL request
     Given I launch the SCSB application
     When I login with valid credentials
     And I navigate to request page
