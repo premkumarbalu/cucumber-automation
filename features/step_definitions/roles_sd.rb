@@ -23,7 +23,7 @@ Then(/^I should see message user has been (Added Successfully)$/) do |txt_msg|
   sleep 2
   on(RolesPage).txt_searchnetwork_login_element.value = $networklogin
   on(RolesPage).btn_search_element.click
-  sleep 2
+  sleep 5
   @current_page.text.include?($networklogin).should be_true, "User roles not created successfully"
   on(RolesPage).img_delete_element.click
   sleep 2

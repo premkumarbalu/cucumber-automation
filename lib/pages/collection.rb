@@ -26,7 +26,7 @@ class CollectionPage
   button           :btn_deaccession_collectionupdatebutton,         :id => 'collectionDeaccessionButton'
   span             :CGD_status,                                    :id => 'cgdSpanId'
   span             :CGD_status,                                    :id => 'cgdSpanId'
-  button           :btn_close,                                      :class =>'close'
+  button           :btn_close,                                     :class =>'close'
 
 
   def testing
