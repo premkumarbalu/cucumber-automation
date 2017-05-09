@@ -19,9 +19,9 @@ After do |scenario|
   if scenario.failed?
     #headless.video.stop_and_save("/tmp/#{BUILD_ID}/#{scenario.name.split.join("_")}.mov")
     #@browser.save_screenshot(path)
-    @browser.save_screenshot("./results/#{Time.now.strftime('%Y_%m_%d-%HH_%MM_%SS')}_screenshot.png")
-    embed "./results/#{Time.now.strftime('%Y_%m_%d-%HH_%MM_%SS')}_screenshot.png", "image/png" rescue false
+    #@browser.save_screenshot("./results/#{Time.now.strftime('%Y_%m_%d-%HH_%MM_%SS')}_screenshot.png")
+    #embed "./results/#{Time.now.strftime('%Y_%m_%d-%HH_%MM_%SS')}_screenshot.png", "image/png" rescue false
   end
-  @browser.quit
+  #@browser.quit
   #headless.destroy
 end
