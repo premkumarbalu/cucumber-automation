@@ -123,7 +123,7 @@ Feature: Collection
 	 And I enter deaccession notes 
 	 And I click submit
 	Then I should see The item has been successfully deaccessioned
-	When I serach with the same barcode in collection UI
+	When I search with same barcode in collection UI
 	Then I should see message "Barcode(s) not found"
 	
   @automation

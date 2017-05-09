@@ -77,6 +77,7 @@ When(/^I click search button$/) do
 end
 
 Then(/^I should see the search results$/) do
+  @current_page.wait_until(30, "Search Result hasn't displayed on search page"){on(SearchPage).table_searchResultsDiv_element.visible?}
   on(SearchPage).table_searchResultsDiv_element.visible?.should be_true, "Search Result hasn't displayed on search page"
 end
 

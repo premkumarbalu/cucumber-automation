@@ -65,11 +65,15 @@ Then(/^I should see search results with following elements:$/) do |table|
 end
 
 When(/^I click on the title$/) do
-  sleep 5
+  @current_page.wait_until(30, "Title element hasn't displayed"){on(CollectionPage).lnk_title_element.visible?}
   on(CollectionPage).lnk_title_element.click
-
   #on(SearchPage).switch_browser_title('Collection Update')
+  begin
   @current_page.wait_until(30,"Item detail page hasn't displayed"){on(CollectionPage).txt_item_details_element.visible?}
+  rescue
+    on(CollectionPage).lnk_title_element.click
+    @current_page.wait_until(30,"Item detail page hasn't displayed_rescue_error"){on(CollectionPage).txt_item_details_element.visible?}
+  end
 end
 
 Then(/^I should see item detail page with following elements$/) do |table|
@@ -213,8 +217,12 @@ end
 
 When(/^I search with same barcode in collection UI$/) do
   #on(SearchPage).switch_browser_title('Search Records')
-  @current_page.wait_until(30,"Close button hasn't displayed"){on(CollectionPage).btn_close_element.visible?}
+  begin
   on(CollectionPage).btn_close_element.click
+  rescue
+    @current_page.wait_until(30, "Close button hasn't displayed"){on(CollectionPage).btn_close_element.visible?}
+  on(CollectionPage).btn_close_element.click
+  end
   sleep 2
   step 'I enter valid Barcode in collection search box'
   step 'I click Display Records'
